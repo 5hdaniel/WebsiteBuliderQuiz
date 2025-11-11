@@ -90,6 +90,7 @@
 
         .content {
             padding: 40px;
+            background: #f5f7fa;
         }
 
         /* Feature Section Variants */
@@ -98,11 +99,11 @@
             border-radius: 12px;
             padding: 25px;
             transition: all 0.3s ease;
+            background: white;
         }
 
         /* Pick ONE style - Red/Orange theme */
         .feature-section.pick-one {
-            background: #fff5f5;
             border: 3px solid #feb2b2;
         }
 
@@ -117,7 +118,6 @@
 
         /* Pick MANY style - Green theme */
         .feature-section.pick-many {
-            background: #f0fff4;
             border: 3px solid #9ae6b4;
         }
 
@@ -132,7 +132,6 @@
 
         /* YES/NO style - Blue theme */
         .feature-section.yes-no {
-            background: #ebf8ff;
             border: 3px solid #90cdf4;
         }
 
@@ -169,36 +168,61 @@
             line-height: 1.6;
         }
 
-        /* A/B Comparison Cards */
-        .ab-container {
+        /* Visual Examples as Options */
+        .visual-options-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
             margin: 20px 0;
         }
 
-        .ab-card {
-            background: white;
-            border: 3px solid #e0e0e0;
-            border-radius: 12px;
-            padding: 20px;
+        .visual-option {
             cursor: pointer;
             transition: all 0.3s ease;
             position: relative;
         }
 
-        .ab-card:hover {
+        .visual-option-card {
+            background: #f9f9f9;
+            border: 3px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 20px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .visual-option:hover .visual-option-card {
             transform: translateY(-5px);
             box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-        }
-
-        .ab-card.selected {
             border-color: #667eea;
-            background: #f0f4ff;
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
         }
 
-        .ab-label {
+        .visual-option.selected .visual-option-card {
+            border-color: #48bb78;
+            background: #f0fff4;
+            box-shadow: 0 8px 25px rgba(72, 187, 120, 0.3);
+        }
+
+        .visual-option.selected::after {
+            content: "✓";
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            width: 40px;
+            height: 40px;
+            background: #48bb78;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(72, 187, 120, 0.4);
+            z-index: 10;
+        }
+
+        .option-label {
             position: absolute;
             top: -12px;
             left: 20px;
@@ -210,34 +234,24 @@
             font-weight: bold;
         }
 
-        .ab-card input[type="radio"] {
+        .visual-option input[type="radio"] {
             display: none;
         }
 
-        .ab-card-title {
+        .option-title {
             font-size: 1.2em;
             font-weight: bold;
             color: #333;
             margin: 10px 0 15px 0;
         }
 
-        .ab-card-content {
-            margin-top: 15px;
-        }
-
-        .visual-example {
-            background: #f9f9f9;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 15px;
+        .or-divider {
+            text-align: center;
             margin: 15px 0;
-        }
-
-        .visual-title {
+            color: #999;
             font-weight: bold;
-            color: #667eea;
-            margin-bottom: 10px;
-            font-size: 0.95em;
+            font-size: 1.2em;
+            text-transform: uppercase;
         }
 
         /* Checkbox List Style */
@@ -252,11 +266,12 @@
             display: flex;
             align-items: center;
             padding: 18px;
-            background: white;
+            background: #f9f9f9;
             border: 2px solid #e0e0e0;
             border-radius: 10px;
             cursor: pointer;
             transition: all 0.3s ease;
+            position: relative;
         }
 
         .checkbox-item:hover {
@@ -267,6 +282,22 @@
         .checkbox-item.selected {
             border-color: #48bb78;
             background: #f0fff4;
+        }
+
+        .checkbox-item.selected::after {
+            content: "✓";
+            position: absolute;
+            right: 15px;
+            width: 30px;
+            height: 30px;
+            background: #48bb78;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: bold;
         }
 
         .checkbox-item input[type="checkbox"] {
@@ -294,7 +325,7 @@
         .toggle-option {
             flex: 1;
             padding: 20px;
-            background: white;
+            background: #f9f9f9;
             border: 3px solid #e0e0e0;
             border-radius: 12px;
             text-align: center;
@@ -302,6 +333,7 @@
             transition: all 0.3s ease;
             font-size: 1.1em;
             font-weight: bold;
+            position: relative;
         }
 
         .toggle-option:hover {
@@ -312,17 +344,32 @@
             border-color: #48bb78;
         }
 
-        .toggle-option.yes:hover,
         .toggle-option.yes.selected {
             background: #48bb78;
             color: white;
+        }
+
+        .toggle-option.yes.selected::after {
+            content: "✓";
+            position: absolute;
+            top: -12px;
+            right: -12px;
+            width: 35px;
+            height: 35px;
+            background: #2f855a;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            box-shadow: 0 4px 12px rgba(72, 187, 120, 0.4);
         }
 
         .toggle-option.no {
             border-color: #cbd5e0;
         }
 
-        .toggle-option.no:hover,
         .toggle-option.no.selected {
             background: #cbd5e0;
             color: #333;
@@ -333,34 +380,31 @@
         }
 
         /* Mockups */
-        .mockup {
-            border: 1px solid #ccc;
-            padding: 10px;
-            margin: 10px 0;
-            background: white;
-            border-radius: 4px;
-        }
-
         .mockup-header {
-            background: #333;
+            background: #2d3748;
             color: white;
-            padding: 10px;
+            padding: 15px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             font-size: 0.9em;
+            border-radius: 6px;
+            margin: 10px 0;
         }
 
         .mockup-nav {
-            background: #f5f5f5;
-            padding: 12px;
+            background: #edf2f7;
+            padding: 15px;
             border-bottom: 2px solid #667eea;
+            border-radius: 6px;
+            margin: 10px 0;
         }
 
         .mockup-nav a {
             margin: 0 10px;
             color: #333;
             text-decoration: none;
+            font-weight: 500;
         }
 
         .mockup-content {
@@ -420,7 +464,7 @@
         }
 
         .search-box {
-            padding: 8px 15px;
+            padding: 10px 15px;
             border: 1px solid #ccc;
             border-radius: 20px;
             width: 200px;
@@ -436,20 +480,64 @@
             display: flex;
             gap: 10px;
             font-size: 1.5em;
+            flex-wrap: wrap;
         }
 
         .emoji-react span {
             cursor: pointer;
-            padding: 5px 10px;
+            padding: 8px 12px;
             border: 1px solid #ddd;
             border-radius: 20px;
+            background: white;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            font-size: 1.5em;
+            transition: transform 0.2s;
+            cursor: pointer;
+        }
+
+        .social-icon:hover {
+            transform: scale(1.1);
+        }
+
+        .social-icon.twitter {
+            background: #1da1f2;
+            color: white;
+        }
+
+        .social-icon.linkedin {
+            background: #0077b5;
+            color: white;
+        }
+
+        .social-icon.bluesky {
+            background: #0085ff;
+            color: white;
         }
 
         .footer-mockup {
-            background: #333;
+            background: #2d3748;
             color: white;
             padding: 20px;
             text-align: center;
+            border-radius: 6px;
+            margin: 10px 0;
         }
 
         .buttons-container {
@@ -559,9 +647,9 @@
             color: #333;
         }
 
-        .none-option {
+        .none-option .visual-option-card {
             background: #f7fafc;
-            border-color: #cbd5e0 !important;
+            border-color: #cbd5e0;
             font-style: italic;
             color: #718096;
         }
@@ -579,8 +667,12 @@
                 padding: 15px;
             }
 
-            .ab-container {
+            .visual-options-container {
                 grid-template-columns: 1fr;
+            }
+
+            .legend {
+                margin: 20px 15px;
             }
         }
     </style>
@@ -598,141 +690,151 @@
             <div class="legend-items">
                 <div class="legend-item">
                     <span class="legend-badge badge-pick-one">🔴 PICK ONE</span>
-                    <span>Choose only ONE option from these red sections</span>
+                    <span>Choose only ONE option - just click on the example you prefer</span>
                 </div>
                 <div class="legend-item">
                     <span class="legend-badge badge-pick-many">✅ PICK MANY</span>
-                    <span>Check ALL that you want from these green sections</span>
+                    <span>Check ALL that you want</span>
                 </div>
                 <div class="legend-item">
-                    <span class="legend-badge" style="background: #4299e1; color: white;">💡 YES/NO</span>
-                    <span>Simple yes or no question</span>
+                    <span style="font-size: 1.3em;">✓</span>
+                    <span>Green checkmarks show your selected options</span>
                 </div>
             </div>
         </div>
 
         <div class="content">
-            <!-- YES/NO: Homepage Feed -->
-            <div class="feature-section yes-no">
+            <!-- Blog Content Layout -->
+            <div class="feature-section pick-one">
                 <div class="feature-title">
-                    <span>Homepage Feed Style</span>
-                    <span class="category-badge" style="background: #4299e1; color: white;">YES / NO</span>
+                    <span>Blog Content Layout</span>
+                    <span class="category-badge badge-pick-one">🔴 PICK ONE</span>
                 </div>
                 <div class="feature-description">
-                    Do you want your blog posts to appear on the homepage with previews that visitors can click to read more?
+                    How should your blog posts be displayed? Click on the layout style you prefer.
                 </div>
 
-                <div class="visual-example">
-                    <div class="visual-title">Example: Chronological Feed</div>
-                    <div class="mockup-content">
-                        <div class="post-preview">
-                            <div class="post-title">My Latest Blog Post</div>
-                            <div class="post-meta">Posted on January 15, 2025 by John Doe</div>
-                            <div class="post-excerpt">This is a preview of the post content. You can see the first few sentences here... <a href="#">Continue reading →</a></div>
-                        </div>
-                        <div class="post-preview">
-                            <div class="post-title">Another Interesting Article</div>
-                            <div class="post-meta">Posted on January 10, 2025 by John Doe</div>
-                            <div class="post-excerpt">More content preview appears here with a brief excerpt... <a href="#">Continue reading →</a></div>
+                <div class="visual-options-container">
+                    <div class="visual-option" onclick="selectVisualOption('contentLayout', 'feed', this)">
+                        <div class="option-label">OPTION A</div>
+                        <div class="visual-option-card">
+                            <input type="radio" name="contentLayout" value="feed">
+                            <div class="option-title">Homepage Feed + Full Articles</div>
+                            <div class="mockup-content">
+                                <div class="post-preview">
+                                    <div class="post-title">My Latest Blog Post</div>
+                                    <div class="post-meta">January 15, 2025</div>
+                                    <div class="post-excerpt">Preview of content here... <a href="#" style="color: #667eea;">Continue reading →</a></div>
+                                </div>
+                            </div>
+                            <p style="margin-top: 10px; color: #666; font-size: 0.95em;">
+                                <strong>Homepage shows previews</strong>, clicking opens the full article on its own page. Best for most blogs!
+                            </p>
                         </div>
                     </div>
-                </div>
 
-                <div class="yes-no-toggle">
-                    <div class="toggle-option yes" onclick="selectYesNo('chronological', true)">
-                        <input type="checkbox" id="chronological" name="chronological">
-                        <div style="font-size: 2em; margin-bottom: 5px;">👍</div>
-                        <div>YES, I want this</div>
-                    </div>
-                    <div class="toggle-option no" onclick="selectYesNo('chronological', false)">
-                        <div style="font-size: 2em; margin-bottom: 5px;">👎</div>
-                        <div>NO, skip this</div>
+                    <div class="visual-option" onclick="selectVisualOption('contentLayout', 'full', this)">
+                        <div class="option-label">OPTION B</div>
+                        <div class="visual-option-card">
+                            <input type="radio" name="contentLayout" value="full">
+                            <div class="option-title">Full Posts on Homepage</div>
+                            <div class="mockup-content">
+                                <div class="post-preview">
+                                    <div class="post-title">My Latest Blog Post</div>
+                                    <div class="post-meta">January 15, 2025</div>
+                                    <div class="post-excerpt">The entire article content appears right here on the homepage. No "continue reading" button needed. Readers just scroll to see full posts.</div>
+                                </div>
+                            </div>
+                            <p style="margin-top: 10px; color: #666; font-size: 0.95em;">
+                                <strong>Complete articles on homepage</strong>. Good for short posts or personal journals.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- PICK ONE: Search Location -->
+            <!-- Search Location -->
             <div class="feature-section pick-one">
                 <div class="feature-title">
                     <span>Search Box Location</span>
                     <span class="category-badge badge-pick-one">🔴 PICK ONE</span>
                 </div>
                 <div class="feature-description">
-                    Choose WHERE you want the search box to appear (or skip it entirely). Pick the option that looks best to you!
+                    Click where you want the search box (or skip it entirely).
                 </div>
 
-                <div class="ab-container">
-                    <div class="ab-card" onclick="selectRadioCard('searchLocation', 'header', this)">
-                        <div class="ab-label">OPTION A</div>
-                        <input type="radio" id="searchHeader" name="searchLocation" value="header">
-                        <div class="ab-card-title">Header Search</div>
-                        <div class="ab-card-content">
+                <div class="visual-options-container">
+                    <div class="visual-option" onclick="selectVisualOption('searchLocation', 'header', this)">
+                        <div class="option-label">OPTION A</div>
+                        <div class="visual-option-card">
+                            <input type="radio" name="searchLocation" value="header">
+                            <div class="option-title">Header Search</div>
                             <div class="mockup-header">
                                 <span>My Blog</span>
                                 <input type="text" class="search-box" placeholder="Search blog..." style="pointer-events: none;">
                             </div>
-                            <p style="margin-top: 10px; color: #666; font-size: 0.95em;">Search box appears at the top of every page in the header area.</p>
+                            <p style="margin-top: 10px; color: #666; font-size: 0.95em;">Search at the top of every page</p>
                         </div>
                     </div>
 
-                    <div class="ab-card" onclick="selectRadioCard('searchLocation', 'sidebar', this)">
-                        <div class="ab-label">OPTION B</div>
-                        <input type="radio" id="searchSidebar" name="searchLocation" value="sidebar">
-                        <div class="ab-card-title">Sidebar Search</div>
-                        <div class="ab-card-content">
-                            <div style="display: flex; gap: 10px;">
-                                <div style="flex: 1; padding: 10px; background: #f9f9f9; border-radius: 4px;">
+                    <div class="visual-option" onclick="selectVisualOption('searchLocation', 'sidebar', this)">
+                        <div class="option-label">OPTION B</div>
+                        <div class="visual-option-card">
+                            <input type="radio" name="searchLocation" value="sidebar">
+                            <div class="option-title">Sidebar Search</div>
+                            <div style="display: flex; gap: 10px; margin: 10px 0;">
+                                <div style="flex: 1; padding: 15px; background: white; border-radius: 4px; border: 1px solid #ddd;">
                                     <div style="font-weight: bold; font-size: 0.85em; margin-bottom: 8px;">Search</div>
                                     <input type="text" class="search-box" placeholder="Search..." style="width: 100%; pointer-events: none;">
                                 </div>
-                                <div style="flex: 2; padding: 10px; font-size: 0.85em; color: #999;">Main content area...</div>
+                                <div style="flex: 2; padding: 15px; font-size: 0.85em; color: #999;">Main content...</div>
                             </div>
-                            <p style="margin-top: 10px; color: #666; font-size: 0.95em;">Search box appears in the sidebar next to your content.</p>
+                            <p style="margin-top: 10px; color: #666; font-size: 0.95em;">Search in sidebar next to content</p>
                         </div>
                     </div>
 
-                    <div class="ab-card none-option" onclick="selectRadioCard('searchLocation', 'none', this)">
-                        <div class="ab-label" style="background: #718096;">OPTION C</div>
-                        <input type="radio" id="searchNone" name="searchLocation" value="none">
-                        <div class="ab-card-title">No Search Needed</div>
-                        <div class="ab-card-content">
-                            <p style="color: #666; font-size: 0.95em;">Skip the search feature. Readers can browse by categories and tags instead.</p>
+                    <div class="visual-option none-option" onclick="selectVisualOption('searchLocation', 'none', this)">
+                        <div class="option-label" style="background: #718096;">OPTION C</div>
+                        <div class="visual-option-card">
+                            <input type="radio" name="searchLocation" value="none">
+                            <div class="option-title">No Search Needed</div>
+                            <p style="color: #666; font-size: 0.95em; margin: 20px 0;">Skip search. Readers use categories instead.</p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- PICK ONE: Navigation Style -->
+            <!-- Navigation Style -->
             <div class="feature-section pick-one">
                 <div class="feature-title">
                     <span>Navigation Menu Style</span>
                     <span class="category-badge badge-pick-one">🔴 PICK ONE</span>
                 </div>
                 <div class="feature-description">
-                    How should your main menu look? Choose the style you prefer!
+                    Click on your preferred menu style.
                 </div>
 
-                <div class="ab-container">
-                    <div class="ab-card" onclick="selectRadioCard('navigationStyle', 'top', this)">
-                        <div class="ab-label">OPTION A</div>
-                        <input type="radio" id="topNav" name="navigationStyle" value="top">
-                        <div class="ab-card-title">Top Navigation Bar</div>
-                        <div class="ab-card-content">
+                <div class="visual-options-container">
+                    <div class="visual-option" onclick="selectVisualOption('navigationStyle', 'top', this)">
+                        <div class="option-label">OPTION A</div>
+                        <div class="visual-option-card">
+                            <input type="radio" name="navigationStyle" value="top">
+                            <div class="option-title">Top Navigation Bar</div>
                             <div class="mockup-nav">
                                 <a href="#" style="font-weight: bold;">Home</a>
                                 <a href="#">About</a>
                                 <a href="#">Blog ▼</a>
                                 <a href="#">Contact</a>
                             </div>
-                            <p style="margin-top: 10px; color: #666; font-size: 0.95em;">Traditional horizontal menu across the top. Great for desktop viewing.</p>
+                            <p style="margin-top: 10px; color: #666; font-size: 0.95em;">Traditional horizontal menu</p>
                         </div>
                     </div>
 
-                    <div class="ab-card" onclick="selectRadioCard('navigationStyle', 'hamburger', this)">
-                        <div class="ab-label">OPTION B</div>
-                        <input type="radio" id="hamburgerNav" name="navigationStyle" value="hamburger">
-                        <div class="ab-card-title">Hamburger Menu</div>
-                        <div class="ab-card-content">
+                    <div class="visual-option" onclick="selectVisualOption('navigationStyle', 'hamburger', this)">
+                        <div class="option-label">OPTION B</div>
+                        <div class="visual-option-card">
+                            <input type="radio" name="navigationStyle" value="hamburger">
+                            <div class="option-title">Hamburger Menu</div>
                             <div class="mockup-header">
                                 <span>My Blog</span>
                                 <div class="hamburger">
@@ -741,28 +843,28 @@
                                     <span></span>
                                 </div>
                             </div>
-                            <p style="margin-top: 10px; color: #666; font-size: 0.95em;">Modern "three lines" menu button that opens a side panel. Clean and mobile-friendly.</p>
+                            <p style="margin-top: 10px; color: #666; font-size: 0.95em;">Modern "three lines" menu button</p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- PICK ONE: Post Navigation -->
+            <!-- Post Navigation -->
             <div class="feature-section pick-one">
                 <div class="feature-title">
-                    <span>How to Browse Older Posts</span>
+                    <span>Browsing Older Posts</span>
                     <span class="category-badge badge-pick-one">🔴 PICK ONE</span>
                 </div>
                 <div class="feature-description">
-                    When readers want to see older posts, how should they navigate through them?
+                    Click how you want readers to navigate through older posts.
                 </div>
 
-                <div class="ab-container">
-                    <div class="ab-card" onclick="selectRadioCard('postNavigation', 'pagination', this)">
-                        <div class="ab-label">OPTION A</div>
-                        <input type="radio" id="pagination" name="postNavigation" value="pagination">
-                        <div class="ab-card-title">Page Numbers</div>
-                        <div class="ab-card-content">
+                <div class="visual-options-container">
+                    <div class="visual-option" onclick="selectVisualOption('postNavigation', 'pagination', this)">
+                        <div class="option-label">OPTION A</div>
+                        <div class="visual-option-card">
+                            <input type="radio" name="postNavigation" value="pagination">
+                            <div class="option-title">Page Numbers</div>
                             <div class="pagination">
                                 <a href="#">← Previous</a>
                                 <a href="#" style="background: #333;">1</a>
@@ -770,210 +872,237 @@
                                 <a href="#">3</a>
                                 <a href="#">Next →</a>
                             </div>
-                            <p style="margin-top: 10px; color: #666; font-size: 0.95em;">Click page numbers to jump to different pages of posts. Like a book!</p>
+                            <p style="margin-top: 10px; color: #666; font-size: 0.95em;">Click page numbers (like a book)</p>
                         </div>
                     </div>
 
-                    <div class="ab-card" onclick="selectRadioCard('postNavigation', 'infinite', this)">
-                        <div class="ab-label">OPTION B</div>
-                        <input type="radio" id="infiniteScroll" name="postNavigation" value="infinite">
-                        <div class="ab-card-title">Infinite Scroll</div>
-                        <div class="ab-card-content">
+                    <div class="visual-option" onclick="selectVisualOption('postNavigation', 'infinite', this)">
+                        <div class="option-label">OPTION B</div>
+                        <div class="visual-option-card">
+                            <input type="radio" name="postNavigation" value="infinite">
+                            <div class="option-title">Infinite Scroll</div>
                             <div class="mockup-content">
-                                <div class="post-preview" style="padding: 8px 0;">Post 1...</div>
-                                <div class="post-preview" style="padding: 8px 0;">Post 2...</div>
-                                <div class="post-preview" style="padding: 8px 0;">Post 3...</div>
+                                <div class="post-preview" style="padding: 8px 0; border: none;">Post 1...</div>
+                                <div class="post-preview" style="padding: 8px 0; border: none;">Post 2...</div>
                                 <div style="text-align: center; padding: 10px; color: #667eea; font-size: 0.9em;">
-                                    ↓ Scroll down to automatically load more ↓
+                                    ↓ Scroll to load more ↓
                                 </div>
                             </div>
-                            <p style="margin-top: 10px; color: #666; font-size: 0.95em;">Posts load automatically as you scroll down. Like social media feeds!</p>
+                            <p style="margin-top: 10px; color: #666; font-size: 0.95em;">Auto-loads as you scroll (like social media)</p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- PICK MANY: Organization Features -->
+            <!-- Reader Comments -->
+            <div class="feature-section pick-one">
+                <div class="feature-title">
+                    <span>Reader Comments</span>
+                    <span class="category-badge badge-pick-one">🔴 PICK ONE</span>
+                </div>
+                <div class="feature-description">
+                    How should readers interact with your posts? Click your preference.
+                </div>
+
+                <div class="visual-options-container">
+                    <div class="visual-option" onclick="selectVisualOption('readerInteraction', 'comments', this)">
+                        <div class="option-label">OPTION A</div>
+                        <div class="visual-option-card">
+                            <input type="radio" name="readerInteraction" value="comments">
+                            <div class="option-title">Traditional Comments</div>
+                            <div class="comment-section">
+                                <h3 style="margin-bottom: 10px; font-size: 1.1em;">Leave a Reply</h3>
+                                <input type="text" placeholder="Your Name" style="width: 100%; padding: 8px; margin: 5px 0; border: 1px solid #ccc; border-radius: 4px;">
+                                <textarea placeholder="Your comment..." style="width: 100%; padding: 8px; margin: 5px 0; border: 1px solid #ccc; border-radius: 4px; height: 60px;"></textarea>
+                            </div>
+                            <p style="margin-top: 10px; color: #666; font-size: 0.95em;">Comments form (private - only you see them)</p>
+                        </div>
+                    </div>
+
+                    <div class="visual-option" onclick="selectVisualOption('readerInteraction', 'emoji', this)">
+                        <div class="option-label">OPTION B</div>
+                        <div class="visual-option-card">
+                            <input type="radio" name="readerInteraction" value="emoji">
+                            <div class="option-title">Emoji Reactions</div>
+                            <div class="emoji-react">
+                                <span>👍 12</span>
+                                <span>❤️ 5</span>
+                                <span>💡 3</span>
+                                <span>😄 2</span>
+                            </div>
+                            <p style="margin-top: 15px; color: #666; font-size: 0.95em;">Quick reactions (like Facebook)</p>
+                        </div>
+                    </div>
+
+                    <div class="visual-option" onclick="selectVisualOption('readerInteraction', 'both', this)">
+                        <div class="option-label">OPTION C</div>
+                        <div class="visual-option-card">
+                            <input type="radio" name="readerInteraction" value="both">
+                            <div class="option-title">Comments + Emoji</div>
+                            <div class="emoji-react" style="margin-bottom: 15px;">
+                                <span>👍 12</span>
+                                <span>❤️ 5</span>
+                            </div>
+                            <div class="comment-section">
+                                <h3 style="font-size: 1em;">+ Comment form below</h3>
+                            </div>
+                            <p style="margin-top: 10px; color: #666; font-size: 0.95em;">Both options for maximum engagement</p>
+                        </div>
+                    </div>
+
+                    <div class="visual-option none-option" onclick="selectVisualOption('readerInteraction', 'none', this)">
+                        <div class="option-label" style="background: #718096;">OPTION D</div>
+                        <div class="visual-option-card">
+                            <input type="radio" name="readerInteraction" value="none">
+                            <div class="option-title">No Comments</div>
+                            <p style="color: #666; font-size: 0.95em; margin: 20px 0;">Read-only blog, no reader feedback</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Organization Features -->
             <div class="feature-section pick-many">
                 <div class="feature-title">
                     <span>Content Organization</span>
                     <span class="category-badge badge-pick-many">✅ PICK ALL YOU WANT</span>
                 </div>
                 <div class="feature-description">
-                    Select any (or all!) of these features to help organize your blog posts by topic.
+                    Check any features to help organize your blog posts by topic.
                 </div>
 
-                <div class="visual-example">
-                    <div class="visual-title">Example: Categories & Tags</div>
-                    <div class="mockup-nav">
-                        <span style="font-weight: bold;">Category: Technology</span>
-                        <div style="margin-top: 8px; font-size: 0.9em;">
-                            Tags: <a href="#" style="background: #e0e0e0; padding: 4px 10px; border-radius: 12px; margin: 0 3px;">AI</a>
-                            <a href="#" style="background: #e0e0e0; padding: 4px 10px; border-radius: 12px; margin: 0 3px;">Web Design</a>
-                        </div>
+                <div class="mockup-nav" style="margin: 15px 0;">
+                    <span style="font-weight: bold;">Category: Technology</span>
+                    <div style="margin-top: 8px; font-size: 0.9em;">
+                        Tags: <span style="background: #e0e0e0; padding: 4px 10px; border-radius: 12px; margin: 0 3px;">AI</span>
+                        <span style="background: #e0e0e0; padding: 4px 10px; border-radius: 12px; margin: 0 3px;">Web Design</span>
                     </div>
                 </div>
 
                 <div class="checkbox-list">
                     <div class="checkbox-item" onclick="toggleCheckbox(this, 'categories')">
                         <input type="checkbox" id="categories" name="categories">
-                        <label for="categories">Category archive pages - Group posts into main topics (like "Technology", "Travel", "Food")</label>
+                        <label for="categories">Category pages - Group posts into main topics (like "Technology", "Travel")</label>
                     </div>
                     <div class="checkbox-item" onclick="toggleCheckbox(this, 'tags')">
                         <input type="checkbox" id="tags" name="tags">
-                        <label for="tags">Tag filtering - Add keywords to posts for detailed searching (like "AI", "tips", "beginner")</label>
-                    </div>
-                    <div class="checkbox-item" onclick="toggleCheckbox(this, 'singlePost')">
-                        <input type="checkbox" id="singlePost" name="singlePost">
-                        <label for="singlePost">Individual article pages - Each post gets its own dedicated page with full content</label>
+                        <label for="tags">Tag filtering - Add keywords to posts (like "AI", "tips", "beginner")</label>
                     </div>
                 </div>
             </div>
 
-            <!-- PICK MANY: Reader Interaction -->
-            <div class="feature-section pick-many">
-                <div class="feature-title">
-                    <span>Reader Interaction</span>
-                    <span class="category-badge badge-pick-many">✅ PICK ALL YOU WANT</span>
-                </div>
-                <div class="feature-description">
-                    Let readers engage with your content. Check any features you'd like!
-                </div>
-
-                <div class="visual-example">
-                    <div class="visual-title">Example: Comment Form (Private - only you see these)</div>
-                    <div class="comment-section">
-                        <h3 style="margin-bottom: 10px; font-size: 1.1em;">Leave a Reply</h3>
-                        <input type="text" placeholder="Your Name" style="width: 100%; padding: 8px; margin: 5px 0; border: 1px solid #ccc; border-radius: 4px;">
-                        <textarea placeholder="Your comment..." style="width: 100%; padding: 8px; margin: 5px 0; border: 1px solid #ccc; border-radius: 4px; height: 60px;"></textarea>
-                    </div>
-                </div>
-
-                <div class="visual-example">
-                    <div class="visual-title">Example: Emoji Reactions</div>
-                    <div class="emoji-react">
-                        <span title="Like">👍 <small>12</small></span>
-                        <span title="Love">❤️ <small>5</small></span>
-                        <span title="Insightful">💡 <small>3</small></span>
-                    </div>
-                </div>
-
-                <div class="checkbox-list">
-                    <div class="checkbox-item" onclick="toggleCheckbox(this, 'comments')">
-                        <input type="checkbox" id="comments" name="comments">
-                        <label for="comments">Comment functionality - Readers can leave comments (private to you, not public)</label>
-                    </div>
-                    <div class="checkbox-item" onclick="toggleCheckbox(this, 'commentCount')">
-                        <input type="checkbox" id="commentCount" name="commentCount">
-                        <label for="commentCount">Show comment count - Display "3 comments" on post previews</label>
-                    </div>
-                    <div class="checkbox-item" onclick="toggleCheckbox(this, 'emojiReact')">
-                        <input type="checkbox" id="emojiReact" name="emojiReact">
-                        <label for="emojiReact">Emoji reactions - Quick thumbs up, hearts, etc. (like Facebook reactions)</label>
-                    </div>
-                </div>
-            </div>
-
-            <!-- PICK MANY: Static Pages -->
+            <!-- Static Pages -->
             <div class="feature-section pick-many">
                 <div class="feature-title">
                     <span>Additional Pages</span>
                     <span class="category-badge badge-pick-many">✅ PICK ALL YOU WANT</span>
                 </div>
                 <div class="feature-description">
-                    Beyond blog posts, what other pages do you need? Check all that apply.
+                    Check which pages you need beyond blog posts.
                 </div>
 
                 <div class="checkbox-list">
                     <div class="checkbox-item" onclick="toggleCheckbox(this, 'aboutPage')">
                         <input type="checkbox" id="aboutPage" name="aboutPage">
-                        <label for="aboutPage">About page - Tell visitors about yourself and why you blog</label>
+                        <label for="aboutPage">About page - Tell visitors about yourself</label>
                     </div>
                     <div class="checkbox-item" onclick="toggleCheckbox(this, 'writeForUsPage')">
                         <input type="checkbox" id="writeForUsPage" name="writeForUsPage">
-                        <label for="writeForUsPage">"Write for Us" page - Accept guest posts with submission guidelines</label>
+                        <label for="writeForUsPage">"Write for Us" page - Accept guest posts</label>
                     </div>
                     <div class="checkbox-item" onclick="toggleCheckbox(this, 'contactPage')">
                         <input type="checkbox" id="contactPage" name="contactPage">
-                        <label for="contactPage">Contact page - How readers can get in touch with you</label>
+                        <label for="contactPage">Contact page - How to reach you</label>
                     </div>
                 </div>
             </div>
 
-            <!-- PICK MANY: Visual & Design Features -->
+            <!-- Visual Features -->
             <div class="feature-section pick-many">
                 <div class="feature-title">
                     <span>Design & Visual Features</span>
                     <span class="category-badge badge-pick-many">✅ PICK ALL YOU WANT</span>
                 </div>
                 <div class="feature-description">
-                    Make your blog look professional and polished!
+                    Make your blog look professional!
                 </div>
 
                 <div class="checkbox-list">
                     <div class="checkbox-item" onclick="toggleCheckbox(this, 'imagesInPosts')">
                         <input type="checkbox" id="imagesInPosts" name="imagesInPosts">
-                        <label for="imagesInPosts">Featured images - Add photos/thumbnails to posts and sidebars</label>
+                        <label for="imagesInPosts">Featured images - Add photos/thumbnails to posts</label>
                     </div>
                     <div class="checkbox-item" onclick="toggleCheckbox(this, 'socialMedia')">
                         <input type="checkbox" id="socialMedia" name="socialMedia">
                         <label for="socialMedia">Social media links - Icons for Twitter/X, LinkedIn, Bluesky, etc.</label>
                     </div>
+                </div>
+
+                <div style="margin: 15px 0; padding: 15px; background: #f9f9f9; border-radius: 8px;">
+                    <div style="font-weight: bold; margin-bottom: 10px; color: #667eea;">Social Media Example:</div>
+                    <div class="social-icons">
+                        <div class="social-icon twitter">𝕏</div>
+                        <div class="social-icon linkedin">in</div>
+                        <div class="social-icon bluesky">🦋</div>
+                    </div>
+                </div>
+
+                <div class="checkbox-list">
                     <div class="checkbox-item" onclick="toggleCheckbox(this, 'authorBio')">
                         <input type="checkbox" id="authorBio" name="authorBio">
-                        <label for="authorBio">Author bio box - Display your photo and bio on posts</label>
+                        <label for="authorBio">Author bio box - Display your photo and bio</label>
                     </div>
                     <div class="checkbox-item" onclick="toggleCheckbox(this, 'darkMode')">
                         <input type="checkbox" id="darkMode" name="darkMode">
-                        <label for="darkMode">Dark mode toggle - Let readers switch to dark theme for night reading</label>
+                        <label for="darkMode">Dark mode toggle - Night reading theme</label>
                     </div>
                 </div>
             </div>
 
-            <!-- PICK MANY: Navigation & Utility -->
+            <!-- Navigation & Utility -->
             <div class="feature-section pick-many">
                 <div class="feature-title">
                     <span>Navigation & Utilities</span>
                     <span class="category-badge badge-pick-many">✅ PICK ALL YOU WANT</span>
                 </div>
                 <div class="feature-description">
-                    Helpful features to improve navigation and reader experience.
+                    Helpful features to improve reader experience.
                 </div>
 
                 <div class="checkbox-list">
                     <div class="checkbox-item" onclick="toggleCheckbox(this, 'prevNextNav')">
                         <input type="checkbox" id="prevNextNav" name="prevNextNav">
-                        <label for="prevNextNav">Previous/Next links - Navigate between articles easily</label>
+                        <label for="prevNextNav">Previous/Next links - Navigate between articles</label>
                     </div>
                     <div class="checkbox-item" onclick="toggleCheckbox(this, 'newsletter')">
                         <input type="checkbox" id="newsletter" name="newsletter">
-                        <label for="newsletter">Email newsletter signup - Let readers subscribe to get new posts via email</label>
+                        <label for="newsletter">Email newsletter - Let readers subscribe</label>
                     </div>
                     <div class="checkbox-item" onclick="toggleCheckbox(this, 'rssFeed')">
                         <input type="checkbox" id="rssFeed" name="rssFeed">
-                        <label for="rssFeed">RSS feed - For readers who use feed reader apps like Feedly</label>
+                        <label for="rssFeed">RSS feed - For feed reader apps</label>
                     </div>
                 </div>
             </div>
 
-            <!-- PICK MANY: Essential Features -->
+            <!-- Essential Features -->
             <div class="feature-section pick-many">
                 <div class="feature-title">
                     <span>Essential Features</span>
                     <span class="category-badge badge-pick-many">✅ RECOMMENDED</span>
                 </div>
                 <div class="feature-description">
-                    These are strongly recommended for any modern blog!
+                    Strongly recommended for any modern blog!
                 </div>
 
                 <div class="checkbox-list">
-                    <div class="checkbox-item" onclick="toggleCheckbox(this, 'responsive')">
+                    <div class="checkbox-item selected" onclick="toggleCheckbox(this, 'responsive')">
                         <input type="checkbox" id="responsive" name="responsive" checked>
-                        <label for="responsive">Mobile-friendly design - Works great on phones and tablets (HIGHLY RECOMMENDED!)</label>
+                        <label for="responsive">Mobile-friendly design - Works on phones/tablets (HIGHLY RECOMMENDED!)</label>
                     </div>
-                    <div class="checkbox-item" onclick="toggleCheckbox(this, 'copyrightFooter')">
+                    <div class="checkbox-item selected" onclick="toggleCheckbox(this, 'copyrightFooter')">
                         <input type="checkbox" id="copyrightFooter" name="copyrightFooter" checked>
-                        <label for="copyrightFooter">Copyright footer - Professional "© 2025 All rights reserved" at bottom</label>
+                        <label for="copyrightFooter">Copyright footer - "© 2025 All rights reserved"</label>
                     </div>
                 </div>
             </div>
@@ -1007,42 +1136,26 @@
             updateAllStyles();
         });
 
-        // Handle Yes/No toggle
-        function selectYesNo(name, isYes) {
-            const checkbox = document.getElementById(name);
-            const yesBtn = event.currentTarget.parentElement.querySelector('.yes');
-            const noBtn = event.currentTarget.parentElement.querySelector('.no');
+        // Handle visual option selection (for pick-one sections)
+        function selectVisualOption(name, value, element) {
+            // Unselect all options in this group
+            const container = element.parentElement;
+            container.querySelectorAll('.visual-option').forEach(opt => {
+                opt.classList.remove('selected');
+            });
 
-            checkbox.checked = isYes;
-
-            if (isYes) {
-                yesBtn.classList.add('selected');
-                noBtn.classList.remove('selected');
-            } else {
-                yesBtn.classList.remove('selected');
-                noBtn.classList.add('selected');
-            }
-        }
-
-        // Handle radio card selection
-        function selectRadioCard(name, value, card) {
-            // Unselect all cards in this group
-            const container = card.parentElement;
-            container.querySelectorAll('.ab-card').forEach(c => c.classList.remove('selected'));
-
-            // Select this card
-            card.classList.add('selected');
+            // Select this option
+            element.classList.add('selected');
 
             // Update radio button
-            document.getElementById(name.replace('Location', value === 'header' ? 'Header' : value === 'sidebar' ? 'Sidebar' : 'None').replace('Style', value === 'top' ? 'Top' : 'Hamburger').replace('Navigation', value === 'pagination' ? 'Pagination' : 'InfiniteScroll')).checked = true;
-            const radio = card.querySelector('input[type="radio"]');
+            const radio = element.querySelector('input[type="radio"]');
             if (radio) radio.checked = true;
         }
 
         // Handle checkbox toggle
         function toggleCheckbox(item, name) {
             const checkbox = document.getElementById(name);
-            if (event.target.tagName !== 'INPUT') {
+            if (event.target.tagName !== 'INPUT' && event.target.tagName !== 'LABEL') {
                 checkbox.checked = !checkbox.checked;
             }
             updateCheckboxStyle(item, checkbox.checked);
@@ -1063,25 +1176,9 @@
                 updateCheckboxStyle(item, checkbox.checked);
             });
 
-            // Update radio cards
-            document.querySelectorAll('.ab-card input[type="radio"]:checked').forEach(radio => {
-                radio.closest('.ab-card').classList.add('selected');
-            });
-
-            // Update yes/no toggles
-            document.querySelectorAll('.yes-no-toggle').forEach(toggle => {
-                const checkbox = toggle.parentElement.querySelector('input[type="checkbox"]');
-                const yesBtn = toggle.querySelector('.yes');
-                const noBtn = toggle.querySelector('.no');
-
-                if (checkbox.checked) {
-                    yesBtn.classList.add('selected');
-                    noBtn.classList.remove('selected');
-                } else if (yesBtn.classList.contains('selected') || noBtn.classList.contains('selected')) {
-                    // Has been interacted with
-                } else {
-                    // Not yet selected
-                }
+            // Update visual options (radio cards)
+            document.querySelectorAll('.visual-option input[type="radio"]:checked').forEach(radio => {
+                radio.closest('.visual-option').classList.add('selected');
             });
         }
 
@@ -1109,28 +1206,25 @@
             let html = '<div style="margin-bottom: 15px; padding: 15px; background: #e8f5e9; border-radius: 8px;"><strong>✅ Your Selected Features:</strong></div>';
 
             const labels = {
-                chronological: 'Chronological homepage feed',
-                singlePost: 'Individual article pages',
-                categories: 'Category archive pages',
-                tags: 'Tag filtering',
+                contentLayout: 'Blog content layout',
                 searchLocation: 'Search box location',
-                comments: 'Comment functionality (private)',
-                commentCount: 'Comment count display',
-                emojiReact: 'Emoji reactions',
-                postNavigation: 'Post navigation style',
                 navigationStyle: 'Navigation menu style',
-                socialMedia: 'Social media links',
+                postNavigation: 'Post navigation style',
+                readerInteraction: 'Reader interaction',
+                categories: 'Category pages',
+                tags: 'Tag filtering',
                 aboutPage: 'About page',
                 writeForUsPage: 'Write for Us page',
                 contactPage: 'Contact page',
-                prevNextNav: 'Previous/Next navigation',
                 imagesInPosts: 'Featured images',
-                copyrightFooter: 'Copyright footer',
-                responsive: 'Mobile-friendly design',
-                newsletter: 'Email newsletter subscription',
+                socialMedia: 'Social media links',
+                authorBio: 'Author bio',
+                darkMode: 'Dark mode',
+                prevNextNav: 'Previous/Next navigation',
+                newsletter: 'Email newsletter',
                 rssFeed: 'RSS feed',
-                authorBio: 'Author bio section',
-                darkMode: 'Dark mode toggle'
+                responsive: 'Mobile-friendly design',
+                copyrightFooter: 'Copyright footer'
             };
 
             for (const [key, value] of Object.entries(selections)) {
@@ -1164,28 +1258,25 @@
             text += "Generated on: " + new Date().toLocaleDateString() + "\n\n";
 
             const labels = {
-                chronological: 'Chronological homepage feed',
-                singlePost: 'Individual article pages',
-                categories: 'Category archive pages',
-                tags: 'Tag filtering',
+                contentLayout: 'Blog content layout',
                 searchLocation: 'Search box location',
-                comments: 'Comment functionality',
-                commentCount: 'Show comment count',
-                emojiReact: 'Emoji reactions',
-                postNavigation: 'Post navigation style',
                 navigationStyle: 'Navigation menu style',
-                socialMedia: 'Social media links',
+                postNavigation: 'Post navigation style',
+                readerInteraction: 'Reader interaction',
+                categories: 'Category pages',
+                tags: 'Tag filtering',
                 aboutPage: 'About page',
                 writeForUsPage: 'Write for Us page',
                 contactPage: 'Contact page',
-                prevNextNav: 'Previous/Next navigation',
                 imagesInPosts: 'Featured images',
-                copyrightFooter: 'Copyright footer',
-                responsive: 'Mobile-friendly design',
-                newsletter: 'Email newsletter subscription',
+                socialMedia: 'Social media links',
+                authorBio: 'Author bio',
+                darkMode: 'Dark mode',
+                prevNextNav: 'Previous/Next navigation',
+                newsletter: 'Email newsletter',
                 rssFeed: 'RSS feed',
-                authorBio: 'Author bio section',
-                darkMode: 'Dark mode toggle'
+                responsive: 'Mobile-friendly design',
+                copyrightFooter: 'Copyright footer'
             };
 
             for (const [key, value] of Object.entries(selections)) {
