@@ -1,0 +1,1191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Builder - Feature Selector</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .feature-section {
+            margin-bottom: 40px;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 25px;
+            background: #f9f9f9;
+            transition: all 0.3s ease;
+        }
+
+        .feature-section:hover {
+            border-color: #667eea;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
+        }
+
+        .feature-title {
+            font-size: 1.5em;
+            color: #333;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .feature-title::before {
+            content: "⚙️";
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+
+        .feature-description {
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .visual-example {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        .visual-example img {
+            max-width: 100%;
+            border-radius: 4px;
+        }
+
+        .visual-title {
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 0.95em;
+        }
+
+        .option-group {
+            margin: 15px 0;
+        }
+
+        .option {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            margin: 10px 0;
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .option:hover {
+            border-color: #667eea;
+            background: #f0f4ff;
+        }
+
+        .option input[type="radio"],
+        .option input[type="checkbox"] {
+            width: 24px;
+            height: 24px;
+            margin-right: 15px;
+            cursor: pointer;
+        }
+
+        .option label {
+            cursor: pointer;
+            flex: 1;
+            font-size: 1.1em;
+        }
+
+        .option.selected {
+            border-color: #667eea;
+            background: #f0f4ff;
+        }
+
+        .mockup {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 10px 0;
+            background: white;
+            border-radius: 4px;
+        }
+
+        .mockup-header {
+            background: #333;
+            color: white;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9em;
+        }
+
+        .mockup-nav {
+            background: #f5f5f5;
+            padding: 12px;
+            border-bottom: 2px solid #667eea;
+        }
+
+        .mockup-nav a {
+            margin: 0 10px;
+            color: #333;
+            text-decoration: none;
+        }
+
+        .mockup-content {
+            padding: 15px;
+            min-height: 100px;
+        }
+
+        .post-preview {
+            border-bottom: 1px solid #eee;
+            padding: 15px 0;
+        }
+
+        .post-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .post-meta {
+            color: #999;
+            font-size: 0.85em;
+            margin-bottom: 8px;
+        }
+
+        .post-excerpt {
+            color: #666;
+            line-height: 1.5;
+        }
+
+        .hamburger {
+            width: 30px;
+            height: 20px;
+            position: relative;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background: white;
+            margin: 5px 0;
+            border-radius: 2px;
+        }
+
+        .pagination {
+            text-align: center;
+            padding: 15px;
+        }
+
+        .pagination a {
+            margin: 0 5px;
+            padding: 8px 12px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+
+        .search-box {
+            padding: 8px 15px;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            width: 200px;
+        }
+
+        .comment-section {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 4px;
+        }
+
+        .emoji-react {
+            display: flex;
+            gap: 10px;
+            font-size: 1.5em;
+        }
+
+        .emoji-react span {
+            cursor: pointer;
+            padding: 5px 10px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+        }
+
+        .footer-mockup {
+            background: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .buttons-container {
+            position: sticky;
+            bottom: 0;
+            background: white;
+            padding: 20px;
+            border-top: 2px solid #e0e0e0;
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            font-size: 1.1em;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #5568d3;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: #48bb78;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #38a169;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(72, 187, 120, 0.4);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .summary-item {
+            padding: 10px;
+            margin: 8px 0;
+            background: #f0f4ff;
+            border-left: 4px solid #667eea;
+            border-radius: 4px;
+        }
+
+        .summary-label {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .summary-value {
+            color: #667eea;
+            margin-left: 10px;
+        }
+
+        .close-modal {
+            float: right;
+            font-size: 1.5em;
+            cursor: pointer;
+            color: #999;
+        }
+
+        .close-modal:hover {
+            color: #333;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .content {
+                padding: 20px;
+            }
+
+            .feature-section {
+                padding: 15px;
+            }
+        }
+
+        .info-badge {
+            display: inline-block;
+            background: #ffc107;
+            color: #333;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.8em;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+
+        .or-divider {
+            text-align: center;
+            margin: 15px 0;
+            color: #999;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🌐 Blog Builder Configurator</h1>
+            <p>Choose the features you want for your perfect blog</p>
+        </div>
+
+        <div class="content">
+            <!-- Core Features -->
+            <div class="feature-section">
+                <div class="feature-title">Homepage Feed Style</div>
+                <div class="feature-description">
+                    How should your blog posts appear on the homepage? This is what visitors see first when they arrive.
+                </div>
+
+                <div class="visual-example">
+                    <div class="visual-title">Example: Chronological Feed</div>
+                    <div class="mockup-content">
+                        <div class="post-preview">
+                            <div class="post-title">My Latest Blog Post</div>
+                            <div class="post-meta">Posted on January 15, 2025 by John Doe</div>
+                            <div class="post-excerpt">This is a preview of the post content. You can see the first few sentences here... <a href="#">Continue reading →</a></div>
+                        </div>
+                        <div class="post-preview">
+                            <div class="post-title">Another Interesting Article</div>
+                            <div class="post-meta">Posted on January 10, 2025 by John Doe</div>
+                            <div class="post-excerpt">More content preview appears here with a brief excerpt... <a href="#">Continue reading →</a></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="option-group">
+                    <div class="option">
+                        <input type="checkbox" id="chronological" name="chronological">
+                        <label for="chronological">Yes, I want a chronological homepage feed with post excerpts</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Single Post Pages -->
+            <div class="feature-section">
+                <div class="feature-title">Individual Article Pages</div>
+                <div class="feature-description">
+                    Each blog post should have its own dedicated page with the full article content.
+                </div>
+
+                <div class="visual-example">
+                    <div class="visual-title">Example: Full Article Page</div>
+                    <div class="mockup-content">
+                        <h2 style="margin-bottom: 10px;">Understanding Website Design</h2>
+                        <div class="post-meta">Published on January 15, 2025 by John Doe</div>
+                        <hr style="margin: 15px 0;">
+                        <p style="line-height: 1.6; color: #444;">
+                            This is where your full article content would appear. Readers can read everything without clicking "continue reading."
+                            You can include images, videos, and formatted text throughout your article...
+                        </p>
+                    </div>
+                </div>
+
+                <div class="option-group">
+                    <div class="option">
+                        <input type="checkbox" id="singlePost" name="singlePost">
+                        <label for="singlePost">Yes, I want individual pages for each article</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Categories and Tags -->
+            <div class="feature-section">
+                <div class="feature-title">Categories & Tags Organization</div>
+                <div class="feature-description">
+                    Let readers filter your posts by topics (categories) and keywords (tags). Great for organizing content!
+                </div>
+
+                <div class="visual-example">
+                    <div class="visual-title">Example: Category Page</div>
+                    <div class="mockup-nav">
+                        <span style="font-weight: bold;">Category: Technology</span>
+                        <div style="margin-top: 8px; font-size: 0.9em;">
+                            Tags: <a href="#" style="background: #e0e0e0; padding: 4px 10px; border-radius: 12px; margin: 0 3px;">AI</a>
+                            <a href="#" style="background: #e0e0e0; padding: 4px 10px; border-radius: 12px; margin: 0 3px;">Web Design</a>
+                            <a href="#" style="background: #e0e0e0; padding: 4px 10px; border-radius: 12px; margin: 0 3px;">Programming</a>
+                        </div>
+                    </div>
+                    <div class="mockup-content">
+                        <div class="post-preview">
+                            <div class="post-title">AI in Modern Web Development</div>
+                            <div class="post-excerpt">All posts in the Technology category appear here...</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="option-group">
+                    <div class="option">
+                        <input type="checkbox" id="categories" name="categories">
+                        <label for="categories">Yes, I want category archive pages</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="tags" name="tags">
+                        <label for="tags">Yes, I want tag filtering for each article</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Search Box -->
+            <div class="feature-section">
+                <div class="feature-title">Search Functionality <span class="info-badge">CHOOSE ONE</span></div>
+                <div class="feature-description">
+                    Help readers find specific content on your blog. Choose where you want the search box to appear.
+                </div>
+
+                <div class="visual-example">
+                    <div class="visual-title">Option A: Header Search Box</div>
+                    <div class="mockup-header">
+                        <span>My Blog</span>
+                        <input type="text" class="search-box" placeholder="Search blog...">
+                    </div>
+                </div>
+
+                <div class="visual-example">
+                    <div class="visual-title">Option B: Sidebar Search Widget</div>
+                    <div style="display: flex;">
+                        <div style="flex: 1; padding: 15px; background: #f9f9f9;">
+                            <div style="font-weight: bold; margin-bottom: 10px;">Search</div>
+                            <input type="text" class="search-box" placeholder="Search..." style="width: 100%;">
+                        </div>
+                        <div style="flex: 2; padding: 15px;">
+                            <div>Main content area...</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="option-group">
+                    <div class="option">
+                        <input type="radio" id="searchHeader" name="searchLocation" value="header">
+                        <label for="searchHeader">Header search box (top of page)</label>
+                    </div>
+                    <div class="or-divider">- OR -</div>
+                    <div class="option">
+                        <input type="radio" id="searchSidebar" name="searchLocation" value="sidebar">
+                        <label for="searchSidebar">Sidebar search widget</label>
+                    </div>
+                    <div class="or-divider">- OR -</div>
+                    <div class="option">
+                        <input type="radio" id="searchNone" name="searchLocation" value="none">
+                        <label for="searchNone">No search box needed</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Comments -->
+            <div class="feature-section">
+                <div class="feature-title">Reader Interaction</div>
+                <div class="feature-description">
+                    Let readers engage with your content through comments or reactions.
+                </div>
+
+                <div class="visual-example">
+                    <div class="visual-title">Option A: Traditional Comments (private - only you see them)</div>
+                    <div class="comment-section">
+                        <h3 style="margin-bottom: 10px;">Leave a Reply</h3>
+                        <form>
+                            <input type="text" placeholder="Your Name" style="width: 100%; padding: 8px; margin: 5px 0; border: 1px solid #ccc; border-radius: 4px;">
+                            <input type="email" placeholder="Your Email (not public)" style="width: 100%; padding: 8px; margin: 5px 0; border: 1px solid #ccc; border-radius: 4px;">
+                            <textarea placeholder="Your comment..." style="width: 100%; padding: 8px; margin: 5px 0; border: 1px solid #ccc; border-radius: 4px; height: 80px;"></textarea>
+                            <button type="submit" style="padding: 8px 20px; background: #667eea; color: white; border: none; border-radius: 4px; cursor: pointer;">Submit</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="visual-example">
+                    <div class="visual-title">Option B: Emoji Reactions</div>
+                    <div class="emoji-react">
+                        <span title="Like">👍 <small>12</small></span>
+                        <span title="Love">❤️ <small>5</small></span>
+                        <span title="Insightful">💡 <small>3</small></span>
+                        <span title="Funny">😄 <small>2</small></span>
+                    </div>
+                </div>
+
+                <div class="option-group">
+                    <div class="option">
+                        <input type="checkbox" id="comments" name="comments">
+                        <label for="comments">Yes, enable comment functionality (private to you)</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="commentCount" name="commentCount">
+                        <label for="commentCount">Show comment count on post listings</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="emojiReact" name="emojiReact">
+                        <label for="emojiReact">Yes, enable emoji reactions</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pagination -->
+            <div class="feature-section">
+                <div class="feature-title">Navigating Older Posts <span class="info-badge">CHOOSE ONE</span></div>
+                <div class="feature-description">
+                    How should readers browse through older blog posts?
+                </div>
+
+                <div class="visual-example">
+                    <div class="visual-title">Option A: Pagination (Click through pages)</div>
+                    <div class="pagination">
+                        <a href="#">← Previous</a>
+                        <a href="#" style="background: #333;">1</a>
+                        <a href="#">2</a>
+                        <a href="#">3</a>
+                        <a href="#">Next →</a>
+                    </div>
+                </div>
+
+                <div class="visual-example">
+                    <div class="visual-title">Option B: Infinite Scroll (Posts load as you scroll)</div>
+                    <div class="mockup-content">
+                        <div class="post-preview">Post 1...</div>
+                        <div class="post-preview">Post 2...</div>
+                        <div class="post-preview">Post 3...</div>
+                        <div style="text-align: center; padding: 15px; color: #667eea;">
+                            ↓ Scroll down to load more posts automatically ↓
+                        </div>
+                    </div>
+                </div>
+
+                <div class="option-group">
+                    <div class="option">
+                        <input type="radio" id="pagination" name="postNavigation" value="pagination">
+                        <label for="pagination">Pagination with page numbers</label>
+                    </div>
+                    <div class="or-divider">- OR -</div>
+                    <div class="option">
+                        <input type="radio" id="infiniteScroll" name="postNavigation" value="infinite">
+                        <label for="infiniteScroll">Continuous/Infinite scroll</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation Menu -->
+            <div class="feature-section">
+                <div class="feature-title">Navigation Menu Style <span class="info-badge">CHOOSE ONE</span></div>
+                <div class="feature-description">
+                    How should your main navigation menu look and work?
+                </div>
+
+                <div class="visual-example">
+                    <div class="visual-title">Option A: Top Navigation with Dropdown</div>
+                    <div class="mockup-nav">
+                        <a href="#" style="font-weight: bold;">Home</a>
+                        <a href="#">About</a>
+                        <a href="#">Blog ▼</a>
+                        <a href="#">Write for Us</a>
+                        <a href="#">Contact</a>
+                    </div>
+                    <div style="padding: 10px; background: #f0f4ff; font-size: 0.9em;">
+                        When you hover over "Blog ▼", a dropdown appears with categories
+                    </div>
+                </div>
+
+                <div class="visual-example">
+                    <div class="visual-title">Option B: Hamburger Menu (Mobile-Style)</div>
+                    <div class="mockup-header">
+                        <span>My Blog</span>
+                        <div class="hamburger">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+                    <div style="padding: 10px; background: #f0f4ff; font-size: 0.9em;">
+                        Click the hamburger icon (≡) to open a side panel with all menu items
+                    </div>
+                </div>
+
+                <div class="option-group">
+                    <div class="option">
+                        <input type="radio" id="topNav" name="navigationStyle" value="top">
+                        <label for="topNav">Top navigation menu with dropdown submenus</label>
+                    </div>
+                    <div class="or-divider">- OR -</div>
+                    <div class="option">
+                        <input type="radio" id="hamburgerNav" name="navigationStyle" value="hamburger">
+                        <label for="hamburgerNav">Hamburger menu with side panel</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Social Media -->
+            <div class="feature-section">
+                <div class="feature-title">Social Media Links</div>
+                <div class="feature-description">
+                    Add links to your social media profiles so readers can follow you.
+                </div>
+
+                <div class="visual-example">
+                    <div class="visual-title">Example: Social Media Icons</div>
+                    <div class="mockup-header">
+                        <span>My Blog</span>
+                        <div>
+                            <a href="#" style="margin: 0 5px; font-size: 1.2em;">𝕏</a>
+                            <a href="#" style="margin: 0 5px; color: #0077b5;">in</a>
+                            <a href="#" style="margin: 0 5px; color: #1da1f2;">🦋</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="option-group">
+                    <div class="option">
+                        <input type="checkbox" id="socialMedia" name="socialMedia">
+                        <label for="socialMedia">Yes, I want social media links (Twitter/X, LinkedIn, Bluesky, etc.)</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Static Pages -->
+            <div class="feature-section">
+                <div class="feature-title">Additional Pages</div>
+                <div class="feature-description">
+                    Besides blog posts, what other pages do you need?
+                </div>
+
+                <div class="visual-example">
+                    <div class="visual-title">Common Page Examples</div>
+                    <div class="mockup-content">
+                        <div style="margin: 10px 0;">
+                            <strong>About Page:</strong> Tell visitors about yourself, your background, and why you blog
+                        </div>
+                        <div style="margin: 10px 0;">
+                            <strong>Write for Us Page:</strong> If you accept guest posts, include submission guidelines
+                        </div>
+                        <div style="margin: 10px 0;">
+                            <strong>Contact Page:</strong> How readers can get in touch with you
+                        </div>
+                    </div>
+                </div>
+
+                <div class="option-group">
+                    <div class="option">
+                        <input type="checkbox" id="aboutPage" name="aboutPage">
+                        <label for="aboutPage">Yes, I want an About page</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="writeForUsPage" name="writeForUsPage">
+                        <label for="writeForUsPage">Yes, I want a "Write for Us" / Guest Post page</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="contactPage" name="contactPage">
+                        <label for="contactPage">Yes, I want a Contact page</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Post Navigation -->
+            <div class="feature-section">
+                <div class="feature-title">Article Navigation</div>
+                <div class="feature-description">
+                    Help readers navigate between articles easily.
+                </div>
+
+                <div class="visual-example">
+                    <div class="visual-title">Example: Previous/Next Links</div>
+                    <div style="display: flex; justify-content: space-between; padding: 15px; background: #f9f9f9; border-radius: 4px;">
+                        <a href="#" style="color: #667eea;">← Previous: Getting Started with Blogging</a>
+                        <a href="#" style="color: #667eea;">Next: Advanced SEO Tips →</a>
+                    </div>
+                </div>
+
+                <div class="option-group">
+                    <div class="option">
+                        <input type="checkbox" id="prevNextNav" name="prevNextNav">
+                        <label for="prevNextNav">Yes, show Previous/Next post navigation on article pages</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Images -->
+            <div class="feature-section">
+                <div class="feature-title">Images & Visual Content</div>
+                <div class="feature-description">
+                    Include images in your posts and sidebars to make your blog more visually appealing.
+                </div>
+
+                <div class="visual-example">
+                    <div class="visual-title">Example: Featured Images</div>
+                    <div class="post-preview">
+                        <div style="width: 100%; height: 120px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 4px; margin-bottom: 10px; display: flex; align-items: center; justify-content: center; color: white;">
+                            Featured Image Thumbnail
+                        </div>
+                        <div class="post-title">Blog Post with Image</div>
+                        <div class="post-excerpt">Each post can have a featured image that appears as a thumbnail...</div>
+                    </div>
+                </div>
+
+                <div class="option-group">
+                    <div class="option">
+                        <input type="checkbox" id="imagesInPosts" name="imagesInPosts">
+                        <label for="imagesInPosts">Yes, I want to include images in posts and sidebars</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="feature-section">
+                <div class="feature-title">Copyright Footer</div>
+                <div class="feature-description">
+                    Professional copyright notice at the bottom of every page.
+                </div>
+
+                <div class="visual-example">
+                    <div class="visual-title">Example: Footer</div>
+                    <div class="footer-mockup">
+                        © 2025 My Blog. All rights reserved.
+                    </div>
+                </div>
+
+                <div class="option-group">
+                    <div class="option">
+                        <input type="checkbox" id="copyrightFooter" name="copyrightFooter">
+                        <label for="copyrightFooter">Yes, include copyright footer</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Responsive Design -->
+            <div class="feature-section">
+                <div class="feature-title">Mobile-Friendly Design</div>
+                <div class="feature-description">
+                    Make sure your blog looks great on phones and tablets, not just computers.
+                </div>
+
+                <div class="visual-example">
+                    <div class="visual-title">Example: Responsive Layout</div>
+                    <div style="display: flex; gap: 20px; align-items: center; justify-content: center; padding: 20px;">
+                        <div style="border: 2px solid #333; border-radius: 8px; padding: 15px; width: 200px; height: 120px; background: white;">
+                            <div style="font-size: 0.8em; text-align: center; color: #666;">Desktop View<br>Wide Layout</div>
+                        </div>
+                        <div style="font-size: 1.5em;">→</div>
+                        <div style="border: 2px solid #333; border-radius: 12px; padding: 10px; width: 80px; height: 140px; background: white;">
+                            <div style="font-size: 0.6em; text-align: center; color: #666; writing-mode: horizontal-tb;">Mobile View<br>Stacked</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="option-group">
+                    <div class="option">
+                        <input type="checkbox" id="responsive" name="responsive">
+                        <label for="responsive">Yes, make my blog mobile-friendly (highly recommended!)</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Newsletter -->
+            <div class="feature-section">
+                <div class="feature-title">Email Newsletter Subscription</div>
+                <div class="feature-description">
+                    Let readers subscribe to receive your new posts via email.
+                </div>
+
+                <div class="visual-example">
+                    <div class="visual-title">Example: Newsletter Signup</div>
+                    <div style="background: #f0f4ff; padding: 20px; border-radius: 8px; text-align: center;">
+                        <h3 style="margin-bottom: 10px;">📧 Subscribe to Our Newsletter</h3>
+                        <p style="margin-bottom: 15px; color: #666;">Get new posts delivered to your inbox</p>
+                        <input type="email" placeholder="Your email address" style="padding: 10px; width: 250px; border: 1px solid #ccc; border-radius: 4px; margin-right: 10px;">
+                        <button style="padding: 10px 20px; background: #667eea; color: white; border: none; border-radius: 4px; cursor: pointer;">Subscribe</button>
+                    </div>
+                </div>
+
+                <div class="option-group">
+                    <div class="option">
+                        <input type="checkbox" id="newsletter" name="newsletter">
+                        <label for="newsletter">Yes, I want an email newsletter subscription option</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RSS Feed -->
+            <div class="feature-section">
+                <div class="feature-title">RSS Feed</div>
+                <div class="feature-description">
+                    An RSS feed lets readers follow your blog using feed reader apps (like Feedly).
+                </div>
+
+                <div class="visual-example">
+                    <div class="visual-title">Example: RSS Feed Link</div>
+                    <div style="padding: 15px; background: #fff3cd; border-radius: 4px;">
+                        <span style="font-size: 1.2em;">📡</span> <a href="#" style="color: #ff6600;">Subscribe via RSS</a>
+                    </div>
+                </div>
+
+                <div class="option-group">
+                    <div class="option">
+                        <input type="checkbox" id="rssFeed" name="rssFeed">
+                        <label for="rssFeed">Yes, provide an RSS feed</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Author Bio -->
+            <div class="feature-section">
+                <div class="feature-title">Author Bio Section</div>
+                <div class="feature-description">
+                    Display your bio and photo at the end of each post or in the sidebar.
+                </div>
+
+                <div class="visual-example">
+                    <div class="visual-title">Example: Author Bio Box</div>
+                    <div style="display: flex; gap: 15px; padding: 15px; background: #f9f9f9; border-radius: 8px; align-items: center;">
+                        <div style="width: 80px; height: 80px; background: #667eea; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 2em;">JD</div>
+                        <div style="flex: 1;">
+                            <h4 style="margin-bottom: 5px;">About John Doe</h4>
+                            <p style="font-size: 0.9em; color: #666;">John is a writer and technology enthusiast with 10 years of experience. He loves sharing insights about web design and blogging.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="option-group">
+                    <div class="option">
+                        <input type="checkbox" id="authorBio" name="authorBio">
+                        <label for="authorBio">Yes, show author bio on posts</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dark Mode -->
+            <div class="feature-section">
+                <div class="feature-title">Dark Mode Option</div>
+                <div class="feature-description">
+                    Let readers switch between light and dark themes for comfortable reading at night.
+                </div>
+
+                <div class="visual-example">
+                    <div class="visual-title">Example: Light vs Dark Mode</div>
+                    <div style="display: flex; gap: 15px;">
+                        <div style="flex: 1; background: white; border: 1px solid #ddd; padding: 15px; border-radius: 4px;">
+                            <div style="font-weight: bold; margin-bottom: 5px;">☀️ Light Mode</div>
+                            <div style="color: #333;">Easy reading during the day</div>
+                        </div>
+                        <div style="flex: 1; background: #1a1a1a; border: 1px solid #333; padding: 15px; border-radius: 4px; color: white;">
+                            <div style="font-weight: bold; margin-bottom: 5px;">🌙 Dark Mode</div>
+                            <div style="color: #ccc;">Easy on the eyes at night</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="option-group">
+                    <div class="option">
+                        <input type="checkbox" id="darkMode" name="darkMode">
+                        <label for="darkMode">Yes, include dark mode toggle</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="buttons-container">
+            <button class="btn btn-primary" onclick="showSummary()">📋 Review My Choices</button>
+            <button class="btn btn-secondary" onclick="downloadConfig()">💾 Download Configuration</button>
+            <button class="btn btn-secondary" onclick="copyShareableLink()">🔗 Copy Shareable Link</button>
+        </div>
+    </div>
+
+    <!-- Summary Modal -->
+    <div id="summaryModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close-modal" onclick="closeModal()">&times;</span>
+                Your Blog Configuration Summary
+            </div>
+            <div id="summaryContent"></div>
+            <div style="margin-top: 20px; text-align: center;">
+                <button class="btn btn-primary" onclick="closeModal()">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Add click handler to options for better UX
+        document.querySelectorAll('.option').forEach(option => {
+            option.addEventListener('click', function(e) {
+                if (e.target.tagName !== 'INPUT') {
+                    const input = this.querySelector('input');
+                    if (input.type === 'checkbox') {
+                        input.checked = !input.checked;
+                    } else if (input.type === 'radio') {
+                        input.checked = true;
+                    }
+                }
+                updateOptionStyles();
+            });
+        });
+
+        // Update visual styling when options are selected
+        function updateOptionStyles() {
+            document.querySelectorAll('.option').forEach(option => {
+                const input = option.querySelector('input');
+                if (input.checked) {
+                    option.classList.add('selected');
+                } else {
+                    option.classList.remove('selected');
+                }
+            });
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            updateOptionStyles();
+            loadFromURL();
+        });
+
+        // Collect all selections
+        function getSelections() {
+            const selections = {};
+
+            // Checkboxes
+            document.querySelectorAll('input[type="checkbox"]').forEach(input => {
+                selections[input.name] = input.checked;
+            });
+
+            // Radio buttons
+            document.querySelectorAll('input[type="radio"]:checked').forEach(input => {
+                selections[input.name] = input.value;
+            });
+
+            return selections;
+        }
+
+        // Show summary modal
+        function showSummary() {
+            const selections = getSelections();
+            const summaryContent = document.getElementById('summaryContent');
+            let html = '<div style="margin-bottom: 15px; padding: 15px; background: #e8f5e9; border-radius: 8px;"><strong>✅ Features You Selected:</strong></div>';
+
+            const labels = {
+                chronological: 'Chronological homepage feed',
+                singlePost: 'Individual article pages',
+                categories: 'Category archive pages',
+                tags: 'Tag filtering',
+                searchLocation: 'Search box',
+                comments: 'Comment functionality',
+                commentCount: 'Comment count display',
+                emojiReact: 'Emoji reactions',
+                postNavigation: 'Post navigation style',
+                navigationStyle: 'Navigation menu style',
+                socialMedia: 'Social media links',
+                aboutPage: 'About page',
+                writeForUsPage: 'Write for Us page',
+                contactPage: 'Contact page',
+                prevNextNav: 'Previous/Next navigation',
+                imagesInPosts: 'Images in posts',
+                copyrightFooter: 'Copyright footer',
+                responsive: 'Mobile-friendly design',
+                newsletter: 'Email newsletter',
+                rssFeed: 'RSS feed',
+                authorBio: 'Author bio section',
+                darkMode: 'Dark mode toggle'
+            };
+
+            for (const [key, value] of Object.entries(selections)) {
+                if (value && value !== 'none') {
+                    const label = labels[key] || key;
+                    const displayValue = typeof value === 'boolean' ? 'Yes' : value.charAt(0).toUpperCase() + value.slice(1);
+                    html += `<div class="summary-item">
+                        <span class="summary-label">${label}:</span>
+                        <span class="summary-value">${displayValue}</span>
+                    </div>`;
+                }
+            }
+
+            summaryContent.innerHTML = html;
+            document.getElementById('summaryModal').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('summaryModal').classList.remove('active');
+        }
+
+        // Download configuration as text file
+        function downloadConfig() {
+            const selections = getSelections();
+            let text = "BLOG CONFIGURATION\n";
+            text += "==================\n\n";
+            text += "Generated on: " + new Date().toLocaleDateString() + "\n\n";
+
+            const labels = {
+                chronological: 'Chronological homepage feed',
+                singlePost: 'Individual article pages',
+                categories: 'Category archive pages',
+                tags: 'Tag filtering',
+                searchLocation: 'Search box location',
+                comments: 'Comment functionality',
+                commentCount: 'Show comment count',
+                emojiReact: 'Emoji reactions',
+                postNavigation: 'Post navigation style',
+                navigationStyle: 'Navigation menu style',
+                socialMedia: 'Social media links',
+                aboutPage: 'About page',
+                writeForUsPage: 'Write for Us page',
+                contactPage: 'Contact page',
+                prevNextNav: 'Previous/Next navigation',
+                imagesInPosts: 'Images in posts',
+                copyrightFooter: 'Copyright footer',
+                responsive: 'Mobile-friendly design',
+                newsletter: 'Email newsletter subscription',
+                rssFeed: 'RSS feed',
+                authorBio: 'Author bio section',
+                darkMode: 'Dark mode toggle'
+            };
+
+            for (const [key, value] of Object.entries(selections)) {
+                if (value) {
+                    const label = labels[key] || key;
+                    const displayValue = typeof value === 'boolean' ? (value ? 'YES' : 'NO') : value.toUpperCase();
+                    text += `${label}: ${displayValue}\n`;
+                }
+            }
+
+            text += "\n\n=== SHARE THIS FILE WITH YOUR DEVELOPER ===\n";
+
+            const blob = new Blob([text], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'blog-configuration.txt';
+            a.click();
+            URL.revokeObjectURL(url);
+
+            alert('✅ Configuration downloaded! Share the file with your developer.');
+        }
+
+        // Copy shareable link with encoded selections
+        function copyShareableLink() {
+            const selections = getSelections();
+            const encoded = btoa(JSON.stringify(selections));
+            const url = window.location.href.split('?')[0] + '?config=' + encoded;
+
+            // Copy to clipboard
+            navigator.clipboard.writeText(url).then(() => {
+                alert('✅ Shareable link copied to clipboard! Send this link to share your configuration.');
+            }).catch(() => {
+                // Fallback for older browsers
+                const textarea = document.createElement('textarea');
+                textarea.value = url;
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+                alert('✅ Shareable link copied! Send this link to share your configuration.');
+            });
+        }
+
+        // Load configuration from URL parameter
+        function loadFromURL() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const configParam = urlParams.get('config');
+
+            if (configParam) {
+                try {
+                    const selections = JSON.parse(atob(configParam));
+
+                    // Apply selections
+                    for (const [key, value] of Object.entries(selections)) {
+                        if (typeof value === 'boolean') {
+                            const checkbox = document.querySelector(`input[name="${key}"]`);
+                            if (checkbox) checkbox.checked = value;
+                        } else {
+                            const radio = document.querySelector(`input[name="${key}"][value="${value}"]`);
+                            if (radio) radio.checked = true;
+                        }
+                    }
+
+                    updateOptionStyles();
+                    alert('✅ Configuration loaded from shared link!');
+                } catch (e) {
+                    console.error('Failed to load configuration:', e);
+                }
+            }
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('summaryModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
