@@ -44,36 +44,123 @@
             opacity: 0.9;
         }
 
+        .legend {
+            background: #f0f4ff;
+            padding: 20px;
+            margin: 20px 40px;
+            border-radius: 12px;
+            border-left: 6px solid #667eea;
+        }
+
+        .legend-title {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .legend-items {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .legend-badge {
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: bold;
+        }
+
+        .badge-pick-one {
+            background: #ff6b6b;
+            color: white;
+        }
+
+        .badge-pick-many {
+            background: #48bb78;
+            color: white;
+        }
+
         .content {
             padding: 40px;
         }
 
+        /* Feature Section Variants */
         .feature-section {
             margin-bottom: 40px;
-            border: 2px solid #e0e0e0;
             border-radius: 12px;
             padding: 25px;
-            background: #f9f9f9;
             transition: all 0.3s ease;
         }
 
-        .feature-section:hover {
-            border-color: #667eea;
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
+        /* Pick ONE style - Red/Orange theme */
+        .feature-section.pick-one {
+            background: #fff5f5;
+            border: 3px solid #feb2b2;
+        }
+
+        .feature-section.pick-one:hover {
+            border-color: #fc8181;
+            box-shadow: 0 5px 15px rgba(252, 129, 129, 0.3);
+        }
+
+        .feature-section.pick-one .feature-title::before {
+            content: "🔴";
+        }
+
+        /* Pick MANY style - Green theme */
+        .feature-section.pick-many {
+            background: #f0fff4;
+            border: 3px solid #9ae6b4;
+        }
+
+        .feature-section.pick-many:hover {
+            border-color: #68d391;
+            box-shadow: 0 5px 15px rgba(72, 187, 120, 0.3);
+        }
+
+        .feature-section.pick-many .feature-title::before {
+            content: "✅";
+        }
+
+        /* YES/NO style - Blue theme */
+        .feature-section.yes-no {
+            background: #ebf8ff;
+            border: 3px solid #90cdf4;
+        }
+
+        .feature-section.yes-no:hover {
+            border-color: #63b3ed;
+            box-shadow: 0 5px 15px rgba(99, 179, 237, 0.3);
+        }
+
+        .feature-section.yes-no .feature-title::before {
+            content: "💡";
         }
 
         .feature-title {
             font-size: 1.5em;
             color: #333;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             display: flex;
             align-items: center;
+            justify-content: space-between;
         }
 
-        .feature-title::before {
-            content: "⚙️";
-            margin-right: 10px;
-            font-size: 1.2em;
+        .category-badge {
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.6em;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .feature-description {
@@ -82,17 +169,68 @@
             line-height: 1.6;
         }
 
-        .visual-example {
+        /* A/B Comparison Cards */
+        .ab-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .ab-card {
             background: white;
+            border: 3px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .ab-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        .ab-card.selected {
+            border-color: #667eea;
+            background: #f0f4ff;
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .ab-label {
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            background: #667eea;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.85em;
+            font-weight: bold;
+        }
+
+        .ab-card input[type="radio"] {
+            display: none;
+        }
+
+        .ab-card-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #333;
+            margin: 10px 0 15px 0;
+        }
+
+        .ab-card-content {
+            margin-top: 15px;
+        }
+
+        .visual-example {
+            background: #f9f9f9;
             border: 1px solid #ddd;
             border-radius: 8px;
             padding: 15px;
             margin: 15px 0;
-        }
-
-        .visual-example img {
-            max-width: 100%;
-            border-radius: 4px;
         }
 
         .visual-title {
@@ -102,46 +240,99 @@
             font-size: 0.95em;
         }
 
-        .option-group {
+        /* Checkbox List Style */
+        .checkbox-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
             margin: 15px 0;
         }
 
-        .option {
+        .checkbox-item {
             display: flex;
             align-items: center;
-            padding: 15px;
-            margin: 10px 0;
+            padding: 18px;
             background: white;
             border: 2px solid #e0e0e0;
-            border-radius: 8px;
+            border-radius: 10px;
             cursor: pointer;
             transition: all 0.3s ease;
         }
 
-        .option:hover {
+        .checkbox-item:hover {
             border-color: #667eea;
-            background: #f0f4ff;
+            background: #f8faff;
         }
 
-        .option input[type="radio"],
-        .option input[type="checkbox"] {
-            width: 24px;
-            height: 24px;
+        .checkbox-item.selected {
+            border-color: #48bb78;
+            background: #f0fff4;
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            width: 26px;
+            height: 26px;
             margin-right: 15px;
             cursor: pointer;
+            accent-color: #48bb78;
         }
 
-        .option label {
+        .checkbox-item label {
             cursor: pointer;
             flex: 1;
+            font-size: 1.05em;
+            color: #333;
+        }
+
+        /* Yes/No Toggle */
+        .yes-no-toggle {
+            display: flex;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .toggle-option {
+            flex: 1;
+            padding: 20px;
+            background: white;
+            border: 3px solid #e0e0e0;
+            border-radius: 12px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
             font-size: 1.1em;
+            font-weight: bold;
         }
 
-        .option.selected {
-            border-color: #667eea;
-            background: #f0f4ff;
+        .toggle-option:hover {
+            transform: scale(1.05);
         }
 
+        .toggle-option.yes {
+            border-color: #48bb78;
+        }
+
+        .toggle-option.yes:hover,
+        .toggle-option.yes.selected {
+            background: #48bb78;
+            color: white;
+        }
+
+        .toggle-option.no {
+            border-color: #cbd5e0;
+        }
+
+        .toggle-option.no:hover,
+        .toggle-option.no.selected {
+            background: #cbd5e0;
+            color: #333;
+        }
+
+        .toggle-option input {
+            display: none;
+        }
+
+        /* Mockups */
         .mockup {
             border: 1px solid #ccc;
             padding: 10px;
@@ -271,6 +462,7 @@
             gap: 15px;
             justify-content: center;
             flex-wrap: wrap;
+            box-shadow: 0 -5px 20px rgba(0,0,0,0.1);
         }
 
         .btn {
@@ -367,6 +559,13 @@
             color: #333;
         }
 
+        .none-option {
+            background: #f7fafc;
+            border-color: #cbd5e0 !important;
+            font-style: italic;
+            color: #718096;
+        }
+
         @media (max-width: 768px) {
             .header h1 {
                 font-size: 1.8em;
@@ -379,25 +578,10 @@
             .feature-section {
                 padding: 15px;
             }
-        }
 
-        .info-badge {
-            display: inline-block;
-            background: #ffc107;
-            color: #333;
-            padding: 4px 12px;
-            border-radius: 12px;
-            font-size: 0.8em;
-            font-weight: bold;
-            margin-left: 10px;
-        }
-
-        .or-divider {
-            text-align: center;
-            margin: 15px 0;
-            color: #999;
-            font-weight: bold;
-            font-size: 1.1em;
+            .ab-container {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -408,12 +592,34 @@
             <p>Choose the features you want for your perfect blog</p>
         </div>
 
+        <!-- Legend -->
+        <div class="legend">
+            <div class="legend-title">📖 How to Use This Guide:</div>
+            <div class="legend-items">
+                <div class="legend-item">
+                    <span class="legend-badge badge-pick-one">🔴 PICK ONE</span>
+                    <span>Choose only ONE option from these red sections</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-badge badge-pick-many">✅ PICK MANY</span>
+                    <span>Check ALL that you want from these green sections</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-badge" style="background: #4299e1; color: white;">💡 YES/NO</span>
+                    <span>Simple yes or no question</span>
+                </div>
+            </div>
+        </div>
+
         <div class="content">
-            <!-- Core Features -->
-            <div class="feature-section">
-                <div class="feature-title">Homepage Feed Style</div>
+            <!-- YES/NO: Homepage Feed -->
+            <div class="feature-section yes-no">
+                <div class="feature-title">
+                    <span>Homepage Feed Style</span>
+                    <span class="category-badge" style="background: #4299e1; color: white;">YES / NO</span>
+                </div>
                 <div class="feature-description">
-                    How should your blog posts appear on the homepage? This is what visitors see first when they arrive.
+                    Do you want your blog posts to appear on the homepage with previews that visitors can click to read more?
                 </div>
 
                 <div class="visual-example">
@@ -432,525 +638,342 @@
                     </div>
                 </div>
 
-                <div class="option-group">
-                    <div class="option">
+                <div class="yes-no-toggle">
+                    <div class="toggle-option yes" onclick="selectYesNo('chronological', true)">
                         <input type="checkbox" id="chronological" name="chronological">
-                        <label for="chronological">Yes, I want a chronological homepage feed with post excerpts</label>
+                        <div style="font-size: 2em; margin-bottom: 5px;">👍</div>
+                        <div>YES, I want this</div>
+                    </div>
+                    <div class="toggle-option no" onclick="selectYesNo('chronological', false)">
+                        <div style="font-size: 2em; margin-bottom: 5px;">👎</div>
+                        <div>NO, skip this</div>
                     </div>
                 </div>
             </div>
 
-            <!-- Single Post Pages -->
-            <div class="feature-section">
-                <div class="feature-title">Individual Article Pages</div>
+            <!-- PICK ONE: Search Location -->
+            <div class="feature-section pick-one">
+                <div class="feature-title">
+                    <span>Search Box Location</span>
+                    <span class="category-badge badge-pick-one">🔴 PICK ONE</span>
+                </div>
                 <div class="feature-description">
-                    Each blog post should have its own dedicated page with the full article content.
+                    Choose WHERE you want the search box to appear (or skip it entirely). Pick the option that looks best to you!
                 </div>
 
-                <div class="visual-example">
-                    <div class="visual-title">Example: Full Article Page</div>
-                    <div class="mockup-content">
-                        <h2 style="margin-bottom: 10px;">Understanding Website Design</h2>
-                        <div class="post-meta">Published on January 15, 2025 by John Doe</div>
-                        <hr style="margin: 15px 0;">
-                        <p style="line-height: 1.6; color: #444;">
-                            This is where your full article content would appear. Readers can read everything without clicking "continue reading."
-                            You can include images, videos, and formatted text throughout your article...
-                        </p>
+                <div class="ab-container">
+                    <div class="ab-card" onclick="selectRadioCard('searchLocation', 'header', this)">
+                        <div class="ab-label">OPTION A</div>
+                        <input type="radio" id="searchHeader" name="searchLocation" value="header">
+                        <div class="ab-card-title">Header Search</div>
+                        <div class="ab-card-content">
+                            <div class="mockup-header">
+                                <span>My Blog</span>
+                                <input type="text" class="search-box" placeholder="Search blog..." style="pointer-events: none;">
+                            </div>
+                            <p style="margin-top: 10px; color: #666; font-size: 0.95em;">Search box appears at the top of every page in the header area.</p>
+                        </div>
                     </div>
-                </div>
 
-                <div class="option-group">
-                    <div class="option">
-                        <input type="checkbox" id="singlePost" name="singlePost">
-                        <label for="singlePost">Yes, I want individual pages for each article</label>
+                    <div class="ab-card" onclick="selectRadioCard('searchLocation', 'sidebar', this)">
+                        <div class="ab-label">OPTION B</div>
+                        <input type="radio" id="searchSidebar" name="searchLocation" value="sidebar">
+                        <div class="ab-card-title">Sidebar Search</div>
+                        <div class="ab-card-content">
+                            <div style="display: flex; gap: 10px;">
+                                <div style="flex: 1; padding: 10px; background: #f9f9f9; border-radius: 4px;">
+                                    <div style="font-weight: bold; font-size: 0.85em; margin-bottom: 8px;">Search</div>
+                                    <input type="text" class="search-box" placeholder="Search..." style="width: 100%; pointer-events: none;">
+                                </div>
+                                <div style="flex: 2; padding: 10px; font-size: 0.85em; color: #999;">Main content area...</div>
+                            </div>
+                            <p style="margin-top: 10px; color: #666; font-size: 0.95em;">Search box appears in the sidebar next to your content.</p>
+                        </div>
+                    </div>
+
+                    <div class="ab-card none-option" onclick="selectRadioCard('searchLocation', 'none', this)">
+                        <div class="ab-label" style="background: #718096;">OPTION C</div>
+                        <input type="radio" id="searchNone" name="searchLocation" value="none">
+                        <div class="ab-card-title">No Search Needed</div>
+                        <div class="ab-card-content">
+                            <p style="color: #666; font-size: 0.95em;">Skip the search feature. Readers can browse by categories and tags instead.</p>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Categories and Tags -->
-            <div class="feature-section">
-                <div class="feature-title">Categories & Tags Organization</div>
+            <!-- PICK ONE: Navigation Style -->
+            <div class="feature-section pick-one">
+                <div class="feature-title">
+                    <span>Navigation Menu Style</span>
+                    <span class="category-badge badge-pick-one">🔴 PICK ONE</span>
+                </div>
                 <div class="feature-description">
-                    Let readers filter your posts by topics (categories) and keywords (tags). Great for organizing content!
+                    How should your main menu look? Choose the style you prefer!
+                </div>
+
+                <div class="ab-container">
+                    <div class="ab-card" onclick="selectRadioCard('navigationStyle', 'top', this)">
+                        <div class="ab-label">OPTION A</div>
+                        <input type="radio" id="topNav" name="navigationStyle" value="top">
+                        <div class="ab-card-title">Top Navigation Bar</div>
+                        <div class="ab-card-content">
+                            <div class="mockup-nav">
+                                <a href="#" style="font-weight: bold;">Home</a>
+                                <a href="#">About</a>
+                                <a href="#">Blog ▼</a>
+                                <a href="#">Contact</a>
+                            </div>
+                            <p style="margin-top: 10px; color: #666; font-size: 0.95em;">Traditional horizontal menu across the top. Great for desktop viewing.</p>
+                        </div>
+                    </div>
+
+                    <div class="ab-card" onclick="selectRadioCard('navigationStyle', 'hamburger', this)">
+                        <div class="ab-label">OPTION B</div>
+                        <input type="radio" id="hamburgerNav" name="navigationStyle" value="hamburger">
+                        <div class="ab-card-title">Hamburger Menu</div>
+                        <div class="ab-card-content">
+                            <div class="mockup-header">
+                                <span>My Blog</span>
+                                <div class="hamburger">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
+                            </div>
+                            <p style="margin-top: 10px; color: #666; font-size: 0.95em;">Modern "three lines" menu button that opens a side panel. Clean and mobile-friendly.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PICK ONE: Post Navigation -->
+            <div class="feature-section pick-one">
+                <div class="feature-title">
+                    <span>How to Browse Older Posts</span>
+                    <span class="category-badge badge-pick-one">🔴 PICK ONE</span>
+                </div>
+                <div class="feature-description">
+                    When readers want to see older posts, how should they navigate through them?
+                </div>
+
+                <div class="ab-container">
+                    <div class="ab-card" onclick="selectRadioCard('postNavigation', 'pagination', this)">
+                        <div class="ab-label">OPTION A</div>
+                        <input type="radio" id="pagination" name="postNavigation" value="pagination">
+                        <div class="ab-card-title">Page Numbers</div>
+                        <div class="ab-card-content">
+                            <div class="pagination">
+                                <a href="#">← Previous</a>
+                                <a href="#" style="background: #333;">1</a>
+                                <a href="#">2</a>
+                                <a href="#">3</a>
+                                <a href="#">Next →</a>
+                            </div>
+                            <p style="margin-top: 10px; color: #666; font-size: 0.95em;">Click page numbers to jump to different pages of posts. Like a book!</p>
+                        </div>
+                    </div>
+
+                    <div class="ab-card" onclick="selectRadioCard('postNavigation', 'infinite', this)">
+                        <div class="ab-label">OPTION B</div>
+                        <input type="radio" id="infiniteScroll" name="postNavigation" value="infinite">
+                        <div class="ab-card-title">Infinite Scroll</div>
+                        <div class="ab-card-content">
+                            <div class="mockup-content">
+                                <div class="post-preview" style="padding: 8px 0;">Post 1...</div>
+                                <div class="post-preview" style="padding: 8px 0;">Post 2...</div>
+                                <div class="post-preview" style="padding: 8px 0;">Post 3...</div>
+                                <div style="text-align: center; padding: 10px; color: #667eea; font-size: 0.9em;">
+                                    ↓ Scroll down to automatically load more ↓
+                                </div>
+                            </div>
+                            <p style="margin-top: 10px; color: #666; font-size: 0.95em;">Posts load automatically as you scroll down. Like social media feeds!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PICK MANY: Organization Features -->
+            <div class="feature-section pick-many">
+                <div class="feature-title">
+                    <span>Content Organization</span>
+                    <span class="category-badge badge-pick-many">✅ PICK ALL YOU WANT</span>
+                </div>
+                <div class="feature-description">
+                    Select any (or all!) of these features to help organize your blog posts by topic.
                 </div>
 
                 <div class="visual-example">
-                    <div class="visual-title">Example: Category Page</div>
+                    <div class="visual-title">Example: Categories & Tags</div>
                     <div class="mockup-nav">
                         <span style="font-weight: bold;">Category: Technology</span>
                         <div style="margin-top: 8px; font-size: 0.9em;">
                             Tags: <a href="#" style="background: #e0e0e0; padding: 4px 10px; border-radius: 12px; margin: 0 3px;">AI</a>
                             <a href="#" style="background: #e0e0e0; padding: 4px 10px; border-radius: 12px; margin: 0 3px;">Web Design</a>
-                            <a href="#" style="background: #e0e0e0; padding: 4px 10px; border-radius: 12px; margin: 0 3px;">Programming</a>
-                        </div>
-                    </div>
-                    <div class="mockup-content">
-                        <div class="post-preview">
-                            <div class="post-title">AI in Modern Web Development</div>
-                            <div class="post-excerpt">All posts in the Technology category appear here...</div>
                         </div>
                     </div>
                 </div>
 
-                <div class="option-group">
-                    <div class="option">
+                <div class="checkbox-list">
+                    <div class="checkbox-item" onclick="toggleCheckbox(this, 'categories')">
                         <input type="checkbox" id="categories" name="categories">
-                        <label for="categories">Yes, I want category archive pages</label>
+                        <label for="categories">Category archive pages - Group posts into main topics (like "Technology", "Travel", "Food")</label>
                     </div>
-                    <div class="option">
+                    <div class="checkbox-item" onclick="toggleCheckbox(this, 'tags')">
                         <input type="checkbox" id="tags" name="tags">
-                        <label for="tags">Yes, I want tag filtering for each article</label>
+                        <label for="tags">Tag filtering - Add keywords to posts for detailed searching (like "AI", "tips", "beginner")</label>
+                    </div>
+                    <div class="checkbox-item" onclick="toggleCheckbox(this, 'singlePost')">
+                        <input type="checkbox" id="singlePost" name="singlePost">
+                        <label for="singlePost">Individual article pages - Each post gets its own dedicated page with full content</label>
                     </div>
                 </div>
             </div>
 
-            <!-- Search Box -->
-            <div class="feature-section">
-                <div class="feature-title">Search Functionality <span class="info-badge">CHOOSE ONE</span></div>
+            <!-- PICK MANY: Reader Interaction -->
+            <div class="feature-section pick-many">
+                <div class="feature-title">
+                    <span>Reader Interaction</span>
+                    <span class="category-badge badge-pick-many">✅ PICK ALL YOU WANT</span>
+                </div>
                 <div class="feature-description">
-                    Help readers find specific content on your blog. Choose where you want the search box to appear.
+                    Let readers engage with your content. Check any features you'd like!
                 </div>
 
                 <div class="visual-example">
-                    <div class="visual-title">Option A: Header Search Box</div>
-                    <div class="mockup-header">
-                        <span>My Blog</span>
-                        <input type="text" class="search-box" placeholder="Search blog...">
-                    </div>
-                </div>
-
-                <div class="visual-example">
-                    <div class="visual-title">Option B: Sidebar Search Widget</div>
-                    <div style="display: flex;">
-                        <div style="flex: 1; padding: 15px; background: #f9f9f9;">
-                            <div style="font-weight: bold; margin-bottom: 10px;">Search</div>
-                            <input type="text" class="search-box" placeholder="Search..." style="width: 100%;">
-                        </div>
-                        <div style="flex: 2; padding: 15px;">
-                            <div>Main content area...</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="option-group">
-                    <div class="option">
-                        <input type="radio" id="searchHeader" name="searchLocation" value="header">
-                        <label for="searchHeader">Header search box (top of page)</label>
-                    </div>
-                    <div class="or-divider">- OR -</div>
-                    <div class="option">
-                        <input type="radio" id="searchSidebar" name="searchLocation" value="sidebar">
-                        <label for="searchSidebar">Sidebar search widget</label>
-                    </div>
-                    <div class="or-divider">- OR -</div>
-                    <div class="option">
-                        <input type="radio" id="searchNone" name="searchLocation" value="none">
-                        <label for="searchNone">No search box needed</label>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Comments -->
-            <div class="feature-section">
-                <div class="feature-title">Reader Interaction</div>
-                <div class="feature-description">
-                    Let readers engage with your content through comments or reactions.
-                </div>
-
-                <div class="visual-example">
-                    <div class="visual-title">Option A: Traditional Comments (private - only you see them)</div>
+                    <div class="visual-title">Example: Comment Form (Private - only you see these)</div>
                     <div class="comment-section">
-                        <h3 style="margin-bottom: 10px;">Leave a Reply</h3>
-                        <form>
-                            <input type="text" placeholder="Your Name" style="width: 100%; padding: 8px; margin: 5px 0; border: 1px solid #ccc; border-radius: 4px;">
-                            <input type="email" placeholder="Your Email (not public)" style="width: 100%; padding: 8px; margin: 5px 0; border: 1px solid #ccc; border-radius: 4px;">
-                            <textarea placeholder="Your comment..." style="width: 100%; padding: 8px; margin: 5px 0; border: 1px solid #ccc; border-radius: 4px; height: 80px;"></textarea>
-                            <button type="submit" style="padding: 8px 20px; background: #667eea; color: white; border: none; border-radius: 4px; cursor: pointer;">Submit</button>
-                        </form>
+                        <h3 style="margin-bottom: 10px; font-size: 1.1em;">Leave a Reply</h3>
+                        <input type="text" placeholder="Your Name" style="width: 100%; padding: 8px; margin: 5px 0; border: 1px solid #ccc; border-radius: 4px;">
+                        <textarea placeholder="Your comment..." style="width: 100%; padding: 8px; margin: 5px 0; border: 1px solid #ccc; border-radius: 4px; height: 60px;"></textarea>
                     </div>
                 </div>
 
                 <div class="visual-example">
-                    <div class="visual-title">Option B: Emoji Reactions</div>
+                    <div class="visual-title">Example: Emoji Reactions</div>
                     <div class="emoji-react">
                         <span title="Like">👍 <small>12</small></span>
                         <span title="Love">❤️ <small>5</small></span>
                         <span title="Insightful">💡 <small>3</small></span>
-                        <span title="Funny">😄 <small>2</small></span>
                     </div>
                 </div>
 
-                <div class="option-group">
-                    <div class="option">
+                <div class="checkbox-list">
+                    <div class="checkbox-item" onclick="toggleCheckbox(this, 'comments')">
                         <input type="checkbox" id="comments" name="comments">
-                        <label for="comments">Yes, enable comment functionality (private to you)</label>
+                        <label for="comments">Comment functionality - Readers can leave comments (private to you, not public)</label>
                     </div>
-                    <div class="option">
+                    <div class="checkbox-item" onclick="toggleCheckbox(this, 'commentCount')">
                         <input type="checkbox" id="commentCount" name="commentCount">
-                        <label for="commentCount">Show comment count on post listings</label>
+                        <label for="commentCount">Show comment count - Display "3 comments" on post previews</label>
                     </div>
-                    <div class="option">
+                    <div class="checkbox-item" onclick="toggleCheckbox(this, 'emojiReact')">
                         <input type="checkbox" id="emojiReact" name="emojiReact">
-                        <label for="emojiReact">Yes, enable emoji reactions</label>
+                        <label for="emojiReact">Emoji reactions - Quick thumbs up, hearts, etc. (like Facebook reactions)</label>
                     </div>
                 </div>
             </div>
 
-            <!-- Pagination -->
-            <div class="feature-section">
-                <div class="feature-title">Navigating Older Posts <span class="info-badge">CHOOSE ONE</span></div>
+            <!-- PICK MANY: Static Pages -->
+            <div class="feature-section pick-many">
+                <div class="feature-title">
+                    <span>Additional Pages</span>
+                    <span class="category-badge badge-pick-many">✅ PICK ALL YOU WANT</span>
+                </div>
                 <div class="feature-description">
-                    How should readers browse through older blog posts?
+                    Beyond blog posts, what other pages do you need? Check all that apply.
                 </div>
 
-                <div class="visual-example">
-                    <div class="visual-title">Option A: Pagination (Click through pages)</div>
-                    <div class="pagination">
-                        <a href="#">← Previous</a>
-                        <a href="#" style="background: #333;">1</a>
-                        <a href="#">2</a>
-                        <a href="#">3</a>
-                        <a href="#">Next →</a>
-                    </div>
-                </div>
-
-                <div class="visual-example">
-                    <div class="visual-title">Option B: Infinite Scroll (Posts load as you scroll)</div>
-                    <div class="mockup-content">
-                        <div class="post-preview">Post 1...</div>
-                        <div class="post-preview">Post 2...</div>
-                        <div class="post-preview">Post 3...</div>
-                        <div style="text-align: center; padding: 15px; color: #667eea;">
-                            ↓ Scroll down to load more posts automatically ↓
-                        </div>
-                    </div>
-                </div>
-
-                <div class="option-group">
-                    <div class="option">
-                        <input type="radio" id="pagination" name="postNavigation" value="pagination">
-                        <label for="pagination">Pagination with page numbers</label>
-                    </div>
-                    <div class="or-divider">- OR -</div>
-                    <div class="option">
-                        <input type="radio" id="infiniteScroll" name="postNavigation" value="infinite">
-                        <label for="infiniteScroll">Continuous/Infinite scroll</label>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Navigation Menu -->
-            <div class="feature-section">
-                <div class="feature-title">Navigation Menu Style <span class="info-badge">CHOOSE ONE</span></div>
-                <div class="feature-description">
-                    How should your main navigation menu look and work?
-                </div>
-
-                <div class="visual-example">
-                    <div class="visual-title">Option A: Top Navigation with Dropdown</div>
-                    <div class="mockup-nav">
-                        <a href="#" style="font-weight: bold;">Home</a>
-                        <a href="#">About</a>
-                        <a href="#">Blog ▼</a>
-                        <a href="#">Write for Us</a>
-                        <a href="#">Contact</a>
-                    </div>
-                    <div style="padding: 10px; background: #f0f4ff; font-size: 0.9em;">
-                        When you hover over "Blog ▼", a dropdown appears with categories
-                    </div>
-                </div>
-
-                <div class="visual-example">
-                    <div class="visual-title">Option B: Hamburger Menu (Mobile-Style)</div>
-                    <div class="mockup-header">
-                        <span>My Blog</span>
-                        <div class="hamburger">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </div>
-                    </div>
-                    <div style="padding: 10px; background: #f0f4ff; font-size: 0.9em;">
-                        Click the hamburger icon (≡) to open a side panel with all menu items
-                    </div>
-                </div>
-
-                <div class="option-group">
-                    <div class="option">
-                        <input type="radio" id="topNav" name="navigationStyle" value="top">
-                        <label for="topNav">Top navigation menu with dropdown submenus</label>
-                    </div>
-                    <div class="or-divider">- OR -</div>
-                    <div class="option">
-                        <input type="radio" id="hamburgerNav" name="navigationStyle" value="hamburger">
-                        <label for="hamburgerNav">Hamburger menu with side panel</label>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Social Media -->
-            <div class="feature-section">
-                <div class="feature-title">Social Media Links</div>
-                <div class="feature-description">
-                    Add links to your social media profiles so readers can follow you.
-                </div>
-
-                <div class="visual-example">
-                    <div class="visual-title">Example: Social Media Icons</div>
-                    <div class="mockup-header">
-                        <span>My Blog</span>
-                        <div>
-                            <a href="#" style="margin: 0 5px; font-size: 1.2em;">𝕏</a>
-                            <a href="#" style="margin: 0 5px; color: #0077b5;">in</a>
-                            <a href="#" style="margin: 0 5px; color: #1da1f2;">🦋</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="option-group">
-                    <div class="option">
-                        <input type="checkbox" id="socialMedia" name="socialMedia">
-                        <label for="socialMedia">Yes, I want social media links (Twitter/X, LinkedIn, Bluesky, etc.)</label>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Static Pages -->
-            <div class="feature-section">
-                <div class="feature-title">Additional Pages</div>
-                <div class="feature-description">
-                    Besides blog posts, what other pages do you need?
-                </div>
-
-                <div class="visual-example">
-                    <div class="visual-title">Common Page Examples</div>
-                    <div class="mockup-content">
-                        <div style="margin: 10px 0;">
-                            <strong>About Page:</strong> Tell visitors about yourself, your background, and why you blog
-                        </div>
-                        <div style="margin: 10px 0;">
-                            <strong>Write for Us Page:</strong> If you accept guest posts, include submission guidelines
-                        </div>
-                        <div style="margin: 10px 0;">
-                            <strong>Contact Page:</strong> How readers can get in touch with you
-                        </div>
-                    </div>
-                </div>
-
-                <div class="option-group">
-                    <div class="option">
+                <div class="checkbox-list">
+                    <div class="checkbox-item" onclick="toggleCheckbox(this, 'aboutPage')">
                         <input type="checkbox" id="aboutPage" name="aboutPage">
-                        <label for="aboutPage">Yes, I want an About page</label>
+                        <label for="aboutPage">About page - Tell visitors about yourself and why you blog</label>
                     </div>
-                    <div class="option">
+                    <div class="checkbox-item" onclick="toggleCheckbox(this, 'writeForUsPage')">
                         <input type="checkbox" id="writeForUsPage" name="writeForUsPage">
-                        <label for="writeForUsPage">Yes, I want a "Write for Us" / Guest Post page</label>
+                        <label for="writeForUsPage">"Write for Us" page - Accept guest posts with submission guidelines</label>
                     </div>
-                    <div class="option">
+                    <div class="checkbox-item" onclick="toggleCheckbox(this, 'contactPage')">
                         <input type="checkbox" id="contactPage" name="contactPage">
-                        <label for="contactPage">Yes, I want a Contact page</label>
+                        <label for="contactPage">Contact page - How readers can get in touch with you</label>
                     </div>
                 </div>
             </div>
 
-            <!-- Post Navigation -->
-            <div class="feature-section">
-                <div class="feature-title">Article Navigation</div>
+            <!-- PICK MANY: Visual & Design Features -->
+            <div class="feature-section pick-many">
+                <div class="feature-title">
+                    <span>Design & Visual Features</span>
+                    <span class="category-badge badge-pick-many">✅ PICK ALL YOU WANT</span>
+                </div>
                 <div class="feature-description">
-                    Help readers navigate between articles easily.
+                    Make your blog look professional and polished!
                 </div>
 
-                <div class="visual-example">
-                    <div class="visual-title">Example: Previous/Next Links</div>
-                    <div style="display: flex; justify-content: space-between; padding: 15px; background: #f9f9f9; border-radius: 4px;">
-                        <a href="#" style="color: #667eea;">← Previous: Getting Started with Blogging</a>
-                        <a href="#" style="color: #667eea;">Next: Advanced SEO Tips →</a>
-                    </div>
-                </div>
-
-                <div class="option-group">
-                    <div class="option">
-                        <input type="checkbox" id="prevNextNav" name="prevNextNav">
-                        <label for="prevNextNav">Yes, show Previous/Next post navigation on article pages</label>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Images -->
-            <div class="feature-section">
-                <div class="feature-title">Images & Visual Content</div>
-                <div class="feature-description">
-                    Include images in your posts and sidebars to make your blog more visually appealing.
-                </div>
-
-                <div class="visual-example">
-                    <div class="visual-title">Example: Featured Images</div>
-                    <div class="post-preview">
-                        <div style="width: 100%; height: 120px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 4px; margin-bottom: 10px; display: flex; align-items: center; justify-content: center; color: white;">
-                            Featured Image Thumbnail
-                        </div>
-                        <div class="post-title">Blog Post with Image</div>
-                        <div class="post-excerpt">Each post can have a featured image that appears as a thumbnail...</div>
-                    </div>
-                </div>
-
-                <div class="option-group">
-                    <div class="option">
+                <div class="checkbox-list">
+                    <div class="checkbox-item" onclick="toggleCheckbox(this, 'imagesInPosts')">
                         <input type="checkbox" id="imagesInPosts" name="imagesInPosts">
-                        <label for="imagesInPosts">Yes, I want to include images in posts and sidebars</label>
+                        <label for="imagesInPosts">Featured images - Add photos/thumbnails to posts and sidebars</label>
                     </div>
-                </div>
-            </div>
-
-            <!-- Footer -->
-            <div class="feature-section">
-                <div class="feature-title">Copyright Footer</div>
-                <div class="feature-description">
-                    Professional copyright notice at the bottom of every page.
-                </div>
-
-                <div class="visual-example">
-                    <div class="visual-title">Example: Footer</div>
-                    <div class="footer-mockup">
-                        © 2025 My Blog. All rights reserved.
+                    <div class="checkbox-item" onclick="toggleCheckbox(this, 'socialMedia')">
+                        <input type="checkbox" id="socialMedia" name="socialMedia">
+                        <label for="socialMedia">Social media links - Icons for Twitter/X, LinkedIn, Bluesky, etc.</label>
                     </div>
-                </div>
-
-                <div class="option-group">
-                    <div class="option">
-                        <input type="checkbox" id="copyrightFooter" name="copyrightFooter">
-                        <label for="copyrightFooter">Yes, include copyright footer</label>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Responsive Design -->
-            <div class="feature-section">
-                <div class="feature-title">Mobile-Friendly Design</div>
-                <div class="feature-description">
-                    Make sure your blog looks great on phones and tablets, not just computers.
-                </div>
-
-                <div class="visual-example">
-                    <div class="visual-title">Example: Responsive Layout</div>
-                    <div style="display: flex; gap: 20px; align-items: center; justify-content: center; padding: 20px;">
-                        <div style="border: 2px solid #333; border-radius: 8px; padding: 15px; width: 200px; height: 120px; background: white;">
-                            <div style="font-size: 0.8em; text-align: center; color: #666;">Desktop View<br>Wide Layout</div>
-                        </div>
-                        <div style="font-size: 1.5em;">→</div>
-                        <div style="border: 2px solid #333; border-radius: 12px; padding: 10px; width: 80px; height: 140px; background: white;">
-                            <div style="font-size: 0.6em; text-align: center; color: #666; writing-mode: horizontal-tb;">Mobile View<br>Stacked</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="option-group">
-                    <div class="option">
-                        <input type="checkbox" id="responsive" name="responsive">
-                        <label for="responsive">Yes, make my blog mobile-friendly (highly recommended!)</label>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Newsletter -->
-            <div class="feature-section">
-                <div class="feature-title">Email Newsletter Subscription</div>
-                <div class="feature-description">
-                    Let readers subscribe to receive your new posts via email.
-                </div>
-
-                <div class="visual-example">
-                    <div class="visual-title">Example: Newsletter Signup</div>
-                    <div style="background: #f0f4ff; padding: 20px; border-radius: 8px; text-align: center;">
-                        <h3 style="margin-bottom: 10px;">📧 Subscribe to Our Newsletter</h3>
-                        <p style="margin-bottom: 15px; color: #666;">Get new posts delivered to your inbox</p>
-                        <input type="email" placeholder="Your email address" style="padding: 10px; width: 250px; border: 1px solid #ccc; border-radius: 4px; margin-right: 10px;">
-                        <button style="padding: 10px 20px; background: #667eea; color: white; border: none; border-radius: 4px; cursor: pointer;">Subscribe</button>
-                    </div>
-                </div>
-
-                <div class="option-group">
-                    <div class="option">
-                        <input type="checkbox" id="newsletter" name="newsletter">
-                        <label for="newsletter">Yes, I want an email newsletter subscription option</label>
-                    </div>
-                </div>
-            </div>
-
-            <!-- RSS Feed -->
-            <div class="feature-section">
-                <div class="feature-title">RSS Feed</div>
-                <div class="feature-description">
-                    An RSS feed lets readers follow your blog using feed reader apps (like Feedly).
-                </div>
-
-                <div class="visual-example">
-                    <div class="visual-title">Example: RSS Feed Link</div>
-                    <div style="padding: 15px; background: #fff3cd; border-radius: 4px;">
-                        <span style="font-size: 1.2em;">📡</span> <a href="#" style="color: #ff6600;">Subscribe via RSS</a>
-                    </div>
-                </div>
-
-                <div class="option-group">
-                    <div class="option">
-                        <input type="checkbox" id="rssFeed" name="rssFeed">
-                        <label for="rssFeed">Yes, provide an RSS feed</label>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Author Bio -->
-            <div class="feature-section">
-                <div class="feature-title">Author Bio Section</div>
-                <div class="feature-description">
-                    Display your bio and photo at the end of each post or in the sidebar.
-                </div>
-
-                <div class="visual-example">
-                    <div class="visual-title">Example: Author Bio Box</div>
-                    <div style="display: flex; gap: 15px; padding: 15px; background: #f9f9f9; border-radius: 8px; align-items: center;">
-                        <div style="width: 80px; height: 80px; background: #667eea; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 2em;">JD</div>
-                        <div style="flex: 1;">
-                            <h4 style="margin-bottom: 5px;">About John Doe</h4>
-                            <p style="font-size: 0.9em; color: #666;">John is a writer and technology enthusiast with 10 years of experience. He loves sharing insights about web design and blogging.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="option-group">
-                    <div class="option">
+                    <div class="checkbox-item" onclick="toggleCheckbox(this, 'authorBio')">
                         <input type="checkbox" id="authorBio" name="authorBio">
-                        <label for="authorBio">Yes, show author bio on posts</label>
+                        <label for="authorBio">Author bio box - Display your photo and bio on posts</label>
+                    </div>
+                    <div class="checkbox-item" onclick="toggleCheckbox(this, 'darkMode')">
+                        <input type="checkbox" id="darkMode" name="darkMode">
+                        <label for="darkMode">Dark mode toggle - Let readers switch to dark theme for night reading</label>
                     </div>
                 </div>
             </div>
 
-            <!-- Dark Mode -->
-            <div class="feature-section">
-                <div class="feature-title">Dark Mode Option</div>
+            <!-- PICK MANY: Navigation & Utility -->
+            <div class="feature-section pick-many">
+                <div class="feature-title">
+                    <span>Navigation & Utilities</span>
+                    <span class="category-badge badge-pick-many">✅ PICK ALL YOU WANT</span>
+                </div>
                 <div class="feature-description">
-                    Let readers switch between light and dark themes for comfortable reading at night.
+                    Helpful features to improve navigation and reader experience.
                 </div>
 
-                <div class="visual-example">
-                    <div class="visual-title">Example: Light vs Dark Mode</div>
-                    <div style="display: flex; gap: 15px;">
-                        <div style="flex: 1; background: white; border: 1px solid #ddd; padding: 15px; border-radius: 4px;">
-                            <div style="font-weight: bold; margin-bottom: 5px;">☀️ Light Mode</div>
-                            <div style="color: #333;">Easy reading during the day</div>
-                        </div>
-                        <div style="flex: 1; background: #1a1a1a; border: 1px solid #333; padding: 15px; border-radius: 4px; color: white;">
-                            <div style="font-weight: bold; margin-bottom: 5px;">🌙 Dark Mode</div>
-                            <div style="color: #ccc;">Easy on the eyes at night</div>
-                        </div>
+                <div class="checkbox-list">
+                    <div class="checkbox-item" onclick="toggleCheckbox(this, 'prevNextNav')">
+                        <input type="checkbox" id="prevNextNav" name="prevNextNav">
+                        <label for="prevNextNav">Previous/Next links - Navigate between articles easily</label>
+                    </div>
+                    <div class="checkbox-item" onclick="toggleCheckbox(this, 'newsletter')">
+                        <input type="checkbox" id="newsletter" name="newsletter">
+                        <label for="newsletter">Email newsletter signup - Let readers subscribe to get new posts via email</label>
+                    </div>
+                    <div class="checkbox-item" onclick="toggleCheckbox(this, 'rssFeed')">
+                        <input type="checkbox" id="rssFeed" name="rssFeed">
+                        <label for="rssFeed">RSS feed - For readers who use feed reader apps like Feedly</label>
                     </div>
                 </div>
+            </div>
 
-                <div class="option-group">
-                    <div class="option">
-                        <input type="checkbox" id="darkMode" name="darkMode">
-                        <label for="darkMode">Yes, include dark mode toggle</label>
+            <!-- PICK MANY: Essential Features -->
+            <div class="feature-section pick-many">
+                <div class="feature-title">
+                    <span>Essential Features</span>
+                    <span class="category-badge badge-pick-many">✅ RECOMMENDED</span>
+                </div>
+                <div class="feature-description">
+                    These are strongly recommended for any modern blog!
+                </div>
+
+                <div class="checkbox-list">
+                    <div class="checkbox-item" onclick="toggleCheckbox(this, 'responsive')">
+                        <input type="checkbox" id="responsive" name="responsive" checked>
+                        <label for="responsive">Mobile-friendly design - Works great on phones and tablets (HIGHLY RECOMMENDED!)</label>
+                    </div>
+                    <div class="checkbox-item" onclick="toggleCheckbox(this, 'copyrightFooter')">
+                        <input type="checkbox" id="copyrightFooter" name="copyrightFooter" checked>
+                        <label for="copyrightFooter">Copyright footer - Professional "© 2025 All rights reserved" at bottom</label>
                     </div>
                 </div>
             </div>
@@ -978,40 +1001,91 @@
     </div>
 
     <script>
-        // Add click handler to options for better UX
-        document.querySelectorAll('.option').forEach(option => {
-            option.addEventListener('click', function(e) {
-                if (e.target.tagName !== 'INPUT') {
-                    const input = this.querySelector('input');
-                    if (input.type === 'checkbox') {
-                        input.checked = !input.checked;
-                    } else if (input.type === 'radio') {
-                        input.checked = true;
-                    }
-                }
-                updateOptionStyles();
-            });
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            loadFromURL();
+            updateAllStyles();
         });
 
-        // Update visual styling when options are selected
-        function updateOptionStyles() {
-            document.querySelectorAll('.option').forEach(option => {
-                const input = option.querySelector('input');
-                if (input.checked) {
-                    option.classList.add('selected');
+        // Handle Yes/No toggle
+        function selectYesNo(name, isYes) {
+            const checkbox = document.getElementById(name);
+            const yesBtn = event.currentTarget.parentElement.querySelector('.yes');
+            const noBtn = event.currentTarget.parentElement.querySelector('.no');
+
+            checkbox.checked = isYes;
+
+            if (isYes) {
+                yesBtn.classList.add('selected');
+                noBtn.classList.remove('selected');
+            } else {
+                yesBtn.classList.remove('selected');
+                noBtn.classList.add('selected');
+            }
+        }
+
+        // Handle radio card selection
+        function selectRadioCard(name, value, card) {
+            // Unselect all cards in this group
+            const container = card.parentElement;
+            container.querySelectorAll('.ab-card').forEach(c => c.classList.remove('selected'));
+
+            // Select this card
+            card.classList.add('selected');
+
+            // Update radio button
+            document.getElementById(name.replace('Location', value === 'header' ? 'Header' : value === 'sidebar' ? 'Sidebar' : 'None').replace('Style', value === 'top' ? 'Top' : 'Hamburger').replace('Navigation', value === 'pagination' ? 'Pagination' : 'InfiniteScroll')).checked = true;
+            const radio = card.querySelector('input[type="radio"]');
+            if (radio) radio.checked = true;
+        }
+
+        // Handle checkbox toggle
+        function toggleCheckbox(item, name) {
+            const checkbox = document.getElementById(name);
+            if (event.target.tagName !== 'INPUT') {
+                checkbox.checked = !checkbox.checked;
+            }
+            updateCheckboxStyle(item, checkbox.checked);
+        }
+
+        function updateCheckboxStyle(item, isChecked) {
+            if (isChecked) {
+                item.classList.add('selected');
+            } else {
+                item.classList.remove('selected');
+            }
+        }
+
+        function updateAllStyles() {
+            // Update checkboxes
+            document.querySelectorAll('.checkbox-item').forEach(item => {
+                const checkbox = item.querySelector('input[type="checkbox"]');
+                updateCheckboxStyle(item, checkbox.checked);
+            });
+
+            // Update radio cards
+            document.querySelectorAll('.ab-card input[type="radio"]:checked').forEach(radio => {
+                radio.closest('.ab-card').classList.add('selected');
+            });
+
+            // Update yes/no toggles
+            document.querySelectorAll('.yes-no-toggle').forEach(toggle => {
+                const checkbox = toggle.parentElement.querySelector('input[type="checkbox"]');
+                const yesBtn = toggle.querySelector('.yes');
+                const noBtn = toggle.querySelector('.no');
+
+                if (checkbox.checked) {
+                    yesBtn.classList.add('selected');
+                    noBtn.classList.remove('selected');
+                } else if (yesBtn.classList.contains('selected') || noBtn.classList.contains('selected')) {
+                    // Has been interacted with
                 } else {
-                    option.classList.remove('selected');
+                    // Not yet selected
                 }
             });
         }
 
-        // Initialize
-        document.addEventListener('DOMContentLoaded', function() {
-            updateOptionStyles();
-            loadFromURL();
-        });
-
-        // Collect all selections
+        // Collect selections
         function getSelections() {
             const selections = {};
 
@@ -1028,19 +1102,19 @@
             return selections;
         }
 
-        // Show summary modal
+        // Show summary
         function showSummary() {
             const selections = getSelections();
             const summaryContent = document.getElementById('summaryContent');
-            let html = '<div style="margin-bottom: 15px; padding: 15px; background: #e8f5e9; border-radius: 8px;"><strong>✅ Features You Selected:</strong></div>';
+            let html = '<div style="margin-bottom: 15px; padding: 15px; background: #e8f5e9; border-radius: 8px;"><strong>✅ Your Selected Features:</strong></div>';
 
             const labels = {
                 chronological: 'Chronological homepage feed',
                 singlePost: 'Individual article pages',
                 categories: 'Category archive pages',
                 tags: 'Tag filtering',
-                searchLocation: 'Search box',
-                comments: 'Comment functionality',
+                searchLocation: 'Search box location',
+                comments: 'Comment functionality (private)',
                 commentCount: 'Comment count display',
                 emojiReact: 'Emoji reactions',
                 postNavigation: 'Post navigation style',
@@ -1050,10 +1124,10 @@
                 writeForUsPage: 'Write for Us page',
                 contactPage: 'Contact page',
                 prevNextNav: 'Previous/Next navigation',
-                imagesInPosts: 'Images in posts',
+                imagesInPosts: 'Featured images',
                 copyrightFooter: 'Copyright footer',
                 responsive: 'Mobile-friendly design',
-                newsletter: 'Email newsletter',
+                newsletter: 'Email newsletter subscription',
                 rssFeed: 'RSS feed',
                 authorBio: 'Author bio section',
                 darkMode: 'Dark mode toggle'
@@ -1070,6 +1144,10 @@
                 }
             }
 
+            if (Object.values(selections).filter(v => v && v !== 'none').length === 0) {
+                html += '<p style="color: #999; text-align: center; padding: 20px;">No features selected yet. Go back and make your choices!</p>';
+            }
+
             summaryContent.innerHTML = html;
             document.getElementById('summaryModal').classList.add('active');
         }
@@ -1078,7 +1156,7 @@
             document.getElementById('summaryModal').classList.remove('active');
         }
 
-        // Download configuration as text file
+        // Download configuration
         function downloadConfig() {
             const selections = getSelections();
             let text = "BLOG CONFIGURATION\n";
@@ -1101,7 +1179,7 @@
                 writeForUsPage: 'Write for Us page',
                 contactPage: 'Contact page',
                 prevNextNav: 'Previous/Next navigation',
-                imagesInPosts: 'Images in posts',
+                imagesInPosts: 'Featured images',
                 copyrightFooter: 'Copyright footer',
                 responsive: 'Mobile-friendly design',
                 newsletter: 'Email newsletter subscription',
@@ -1131,17 +1209,15 @@
             alert('✅ Configuration downloaded! Share the file with your developer.');
         }
 
-        // Copy shareable link with encoded selections
+        // Copy shareable link
         function copyShareableLink() {
             const selections = getSelections();
             const encoded = btoa(JSON.stringify(selections));
             const url = window.location.href.split('?')[0] + '?config=' + encoded;
 
-            // Copy to clipboard
             navigator.clipboard.writeText(url).then(() => {
                 alert('✅ Shareable link copied to clipboard! Send this link to share your configuration.');
             }).catch(() => {
-                // Fallback for older browsers
                 const textarea = document.createElement('textarea');
                 textarea.value = url;
                 document.body.appendChild(textarea);
@@ -1152,7 +1228,7 @@
             });
         }
 
-        // Load configuration from URL parameter
+        // Load from URL
         function loadFromURL() {
             const urlParams = new URLSearchParams(window.location.search);
             const configParam = urlParams.get('config');
@@ -1161,7 +1237,6 @@
                 try {
                     const selections = JSON.parse(atob(configParam));
 
-                    // Apply selections
                     for (const [key, value] of Object.entries(selections)) {
                         if (typeof value === 'boolean') {
                             const checkbox = document.querySelector(`input[name="${key}"]`);
@@ -1172,7 +1247,7 @@
                         }
                     }
 
-                    updateOptionStyles();
+                    updateAllStyles();
                     alert('✅ Configuration loaded from shared link!');
                 } catch (e) {
                     console.error('Failed to load configuration:', e);
@@ -1180,7 +1255,7 @@
             }
         }
 
-        // Close modal when clicking outside
+        // Close modal on outside click
         document.getElementById('summaryModal').addEventListener('click', function(e) {
             if (e.target === this) {
                 closeModal();
