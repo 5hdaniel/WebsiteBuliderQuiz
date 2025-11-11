@@ -173,13 +173,15 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 25px;
-            margin: 20px 0;
+            margin: 30px 0;
+            padding-top: 10px;
         }
 
         .visual-option {
             cursor: pointer;
             transition: all 0.3s ease;
             position: relative;
+            margin-top: 5px;
         }
 
         .visual-option-card {
@@ -232,6 +234,7 @@
             border-radius: 12px;
             font-size: 0.85em;
             font-weight: bold;
+            z-index: 10;
         }
 
         .visual-option input[type="radio"] {
