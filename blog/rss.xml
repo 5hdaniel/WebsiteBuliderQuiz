@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+    <title>My Blog</title>
+    <link>https://example.com/blog/</link>
+    <description>Web development, design, and technology insights</description>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 15 Jan 2025 00:00:00 GMT</lastBuildDate>
+    <atom:link href="https://example.com/blog/rss.xml" rel="self" type="application/rss+xml" />
+
+    <item>
+        <title>Understanding Modern Web Design</title>
+        <link>https://example.com/blog/post1.html</link>
+        <guid>https://example.com/blog/post1.html</guid>
+        <pubDate>Wed, 15 Jan 2025 00:00:00 GMT</pubDate>
+        <description>
+            Discover the fundamentals of modern web design including responsive layouts, typography,
+            and color theory. This comprehensive guide will help you create beautiful, user-friendly
+            websites that work on any device.
+        </description>
+        <author>john@example.com (John Doe)</author>
+    </item>
+
+    <item>
+        <title>10 Tips for Better Blogging</title>
+        <link>https://example.com/blog/post2.html</link>
+        <guid>https://example.com/blog/post2.html</guid>
+        <pubDate>Fri, 10 Jan 2025 00:00:00 GMT</pubDate>
+        <description>
+            Want to improve your blog and engage more readers? Here are ten proven strategies
+            that will help you create compelling content, build an audience, and establish your
+            online presence.
+        </description>
+        <author>john@example.com (John Doe)</author>
+    </item>
+
+    <item>
+        <title>Getting Started with CSS Grid</title>
+        <link>https://example.com/blog/post3.html</link>
+        <guid>https://example.com/blog/post3.html</guid>
+        <pubDate>Sun, 05 Jan 2025 00:00:00 GMT</pubDate>
+        <description>
+            CSS Grid is a powerful layout system that makes creating complex responsive layouts easier
+            than ever. Learn how to use Grid to build professional-looking web pages with less code.
+        </description>
+        <author>john@example.com (John Doe)</author>
+    </item>
+</channel>
+</rss>

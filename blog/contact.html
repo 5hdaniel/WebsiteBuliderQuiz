@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - My Blog</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Top Navigation -->
+    <nav class="top-nav">
+        <div class="nav-container">
+            <div class="logo">
+                <h1>My Blog</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+                <li><a href="rss.xml" title="RSS Feed">📡 RSS</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="container">
+        <div class="page-content" style="grid-column: 1 / -1; max-width: 700px; margin: 0 auto;">
+            <h1>Get In Touch</h1>
+
+            <p>
+                I'd love to hear from you! Whether you have a question, feedback, or just want to say hello,
+                feel free to reach out using the form below.
+            </p>
+
+            <form action="#" method="post" class="contact-form">
+                <div class="form-group">
+                    <label for="name">Your Name *</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Your Email *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" name="subject">
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Message *</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+
+                <button type="submit" class="submit-button">Send Message</button>
+            </form>
+
+            <div style="margin-top: 3rem; padding: 2rem; background: #f7fafc; border-radius: 10px;">
+                <h2 style="margin-bottom: 1rem;">Other Ways to Connect</h2>
+
+                <div style="display: flex; flex-direction: column; gap: 1rem;">
+                    <div>
+                        <strong style="color: #667eea;">📧 Email:</strong>
+                        <span style="color: #666;"> john@example.com</span>
+                    </div>
+
+                    <div>
+                        <strong style="color: #667eea;">🐦 Twitter/X:</strong>
+                        <span style="color: #666;"> @johndoe</span>
+                    </div>
+
+                    <div>
+                        <strong style="color: #667eea;">💼 LinkedIn:</strong>
+                        <span style="color: #666;"> /in/johndoe</span>
+                    </div>
+
+                    <div>
+                        <strong style="color: #667eea;">🦋 Bluesky:</strong>
+                        <span style="color: #666;"> @johndoe.bsky.social</span>
+                    </div>
+                </div>
+
+                <div style="margin-top: 2rem; padding-top: 2rem; border-top: 2px solid #e0e0e0;">
+                    <h3 style="margin-bottom: 1rem;">Response Time</h3>
+                    <p style="color: #666; line-height: 1.8; margin: 0;">
+                        I typically respond to messages within 24-48 hours. If you don't hear back from me,
+                        please check your spam folder or try reaching out via social media.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-social">
+                <a href="#" title="Twitter/X">𝕏</a>
+                <a href="#" title="LinkedIn">in</a>
+                <a href="#" title="Bluesky">🦋</a>
+            </div>
+            <p class="copyright">© 2025 My Blog. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

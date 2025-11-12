@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Understanding Modern Web Design - My Blog</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="alternate" type="application/rss+xml" title="RSS Feed" href="rss.xml">
+</head>
+<body>
+    <!-- Top Navigation -->
+    <nav class="top-nav">
+        <div class="nav-container">
+            <div class="logo">
+                <h1>My Blog</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="rss.xml" title="RSS Feed">📡 RSS</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Container with Sidebar -->
+    <div class="container">
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Post Header -->
+            <div class="post-header">
+                <h1>Understanding Modern Web Design</h1>
+                <div class="post-meta">
+                    <span class="author">By John Doe</span>
+                    <span class="date">January 15, 2025</span>
+                </div>
+            </div>
+
+            <!-- Featured Image -->
+            <div class="featured-image" style="margin-bottom: 2rem;">
+                <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=800&h=400&fit=crop" alt="Modern web design workspace">
+            </div>
+
+            <!-- Post Content -->
+            <div class="post-body">
+                <p>
+                    Modern web design has evolved dramatically over the past decade. What was once a simple matter of
+                    arranging text and images on a page has transformed into a complex discipline that combines
+                    aesthetics, user experience, accessibility, and technical performance.
+                </p>
+
+                <p>
+                    In this comprehensive guide, we'll explore the fundamental principles that define modern web design
+                    and help you create websites that not only look great but also provide exceptional user experiences
+                    across all devices.
+                </p>
+
+                <h2>The Foundations of Modern Design</h2>
+
+                <p>
+                    At the heart of modern web design lies a set of core principles that guide every decision we make.
+                    These principles ensure that our websites are not just visually appealing, but also functional,
+                    accessible, and user-friendly.
+                </p>
+
+                <p>
+                    <strong>Responsive Design</strong> is no longer optional—it's essential. With users accessing websites
+                    from devices of all sizes, from smartphones to large desktop monitors, your design must adapt seamlessly
+                    to any screen size. This means using flexible layouts, scalable images, and CSS media queries to create
+                    a consistent experience across all devices.
+                </p>
+
+                <h2>Typography and Visual Hierarchy</h2>
+
+                <p>
+                    Typography plays a crucial role in web design. The fonts you choose, how you size them, and the spacing
+                    you use all contribute to readability and the overall aesthetic of your site. Modern web design embraces
+                    clean, readable fonts and uses typography to create clear visual hierarchies that guide users through
+                    your content.
+                </p>
+
+                <p>
+                    Consider using system fonts or web-safe fonts for optimal performance, and don't be afraid to mix font
+                    weights and sizes to create contrast and emphasis. Remember: good typography is invisible—it simply
+                    makes reading effortless.
+                </p>
+
+                <h2>Color Theory and Brand Identity</h2>
+
+                <p>
+                    Colors evoke emotions and communicate brand identity. Modern web design uses color strategically,
+                    often employing limited color palettes that create harmony and focus. Understanding color theory—
+                    including concepts like complementary colors, analogous colors, and color psychology—can help you
+                    make informed decisions that enhance your design.
+                </p>
+
+                <p>
+                    Don't forget about accessibility when choosing colors. Ensure sufficient contrast between text and
+                    background colors so that all users, including those with visual impairments, can easily read your
+                    content.
+                </p>
+
+                <h2>Conclusion</h2>
+
+                <p>
+                    Modern web design is a blend of art and science. By understanding and applying these fundamental
+                    principles, you can create websites that not only look stunning but also provide excellent user
+                    experiences. Keep learning, stay curious, and don't be afraid to experiment with new techniques
+                    and technologies.
+                </p>
+            </div>
+
+            <!-- Author Bio -->
+            <div class="author-bio">
+                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop" alt="John Doe" class="author-avatar">
+                <div class="author-info">
+                    <h3>John Doe</h3>
+                    <p>
+                        John is a web developer and designer with over 10 years of experience creating beautiful,
+                        user-friendly websites. He's passionate about sharing his knowledge and helping others learn
+                        the craft of web development.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Emoji Reactions -->
+            <div class="emoji-reactions">
+                <h3>How did you like this post?</h3>
+                <div class="emoji-buttons">
+                    <button class="emoji-button" onclick="reactEmoji(this, 'like')" data-count="12">👍 <span>12</span></button>
+                    <button class="emoji-button" onclick="reactEmoji(this, 'love')" data-count="5">❤️ <span>5</span></button>
+                    <button class="emoji-button" onclick="reactEmoji(this, 'insightful')" data-count="3">💡 <span>3</span></button>
+                    <button class="emoji-button" onclick="reactEmoji(this, 'laugh')" data-count="2">😄 <span>2</span></button>
+                </div>
+            </div>
+
+            <!-- Previous/Next Navigation -->
+            <div class="post-navigation">
+                <div class="nav-prev">
+                    <span class="nav-label">← Previous Post</span>
+                    <a href="post3.html">Getting Started with CSS Grid</a>
+                </div>
+                <div class="nav-next">
+                    <span class="nav-label">Next Post →</span>
+                    <a href="post2.html">10 Tips for Better Blogging</a>
+                </div>
+            </div>
+
+            <!-- Comments Section -->
+            <div class="comments-section">
+                <h3>Leave a Comment</h3>
+                <form action="#" method="post" class="comment-form">
+                    <div class="form-group">
+                        <label for="comment-name">Your Name *</label>
+                        <input type="text" id="comment-name" name="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="comment-email">Your Email *</label>
+                        <input type="email" id="comment-email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="comment-message">Your Comment *</label>
+                        <textarea id="comment-message" name="message" required></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-button">Post Comment</button>
+                </form>
+            </div>
+        </main>
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <!-- Search Box -->
+            <div class="widget search-widget">
+                <h3>Search</h3>
+                <form action="#" method="get" class="search-form">
+                    <input type="text" name="q" placeholder="Search posts..." class="search-input">
+                    <button type="submit" class="search-button">🔍</button>
+                </form>
+            </div>
+
+            <!-- Newsletter Signup -->
+            <div class="widget newsletter-widget">
+                <h3>📧 Newsletter</h3>
+                <p>Subscribe to get the latest posts delivered to your inbox!</p>
+                <form action="#" method="post" class="newsletter-form">
+                    <input type="email" name="email" placeholder="Your email address" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+
+            <!-- Social Media Links -->
+            <div class="widget social-widget">
+                <h3>Follow Me</h3>
+                <div class="social-links">
+                    <a href="#" class="social-link twitter" title="Twitter/X">
+                        <span class="social-icon">𝕏</span>
+                        <span>Twitter</span>
+                    </a>
+                    <a href="#" class="social-link linkedin" title="LinkedIn">
+                        <span class="social-icon">in</span>
+                        <span>LinkedIn</span>
+                    </a>
+                    <a href="#" class="social-link bluesky" title="Bluesky">
+                        <span class="social-icon">🦋</span>
+                        <span>Bluesky</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Categories -->
+            <div class="widget categories-widget">
+                <h3>Categories</h3>
+                <ul>
+                    <li><a href="#">Web Design (12)</a></li>
+                    <li><a href="#">Development (8)</a></li>
+                    <li><a href="#">Tutorials (15)</a></li>
+                    <li><a href="#">Tips & Tricks (6)</a></li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-social">
+                <a href="#" title="Twitter/X">𝕏</a>
+                <a href="#" title="LinkedIn">in</a>
+                <a href="#" title="Bluesky">🦋</a>
+            </div>
+            <p class="copyright">© 2025 My Blog. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function reactEmoji(button, type) {
+            button.classList.toggle('selected');
+            let count = parseInt(button.dataset.count);
+
+            if (button.classList.contains('selected')) {
+                count++;
+            } else {
+                count--;
+            }
+
+            button.dataset.count = count;
+            button.querySelector('span').textContent = count;
+        }
+    </script>
+</body>
+</html>

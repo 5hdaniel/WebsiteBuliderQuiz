@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Blog - Latest Posts</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="alternate" type="application/rss+xml" title="RSS Feed" href="rss.xml">
+</head>
+<body>
+    <!-- Top Navigation -->
+    <nav class="top-nav">
+        <div class="nav-container">
+            <div class="logo">
+                <h1>My Blog</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="rss.xml" title="RSS Feed">📡 RSS</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Container with Sidebar -->
+    <div class="container">
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Blog Feed - Post Previews -->
+            <article class="post-preview">
+                <div class="featured-image">
+                    <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=800&h=400&fit=crop" alt="Blog post featured image">
+                </div>
+                <div class="post-content">
+                    <h2><a href="post1.html">Understanding Modern Web Design</a></h2>
+                    <div class="post-meta">
+                        <span class="author">By John Doe</span>
+                        <span class="date">January 15, 2025</span>
+                    </div>
+                    <p class="post-excerpt">
+                        Discover the fundamentals of modern web design including responsive layouts, typography,
+                        and color theory. This comprehensive guide will help you create beautiful, user-friendly
+                        websites that work on any device...
+                    </p>
+                    <a href="post1.html" class="read-more">Continue reading →</a>
+                </div>
+            </article>
+
+            <article class="post-preview">
+                <div class="featured-image">
+                    <img src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=800&h=400&fit=crop" alt="Blog post featured image">
+                </div>
+                <div class="post-content">
+                    <h2><a href="post2.html">10 Tips for Better Blogging</a></h2>
+                    <div class="post-meta">
+                        <span class="author">By John Doe</span>
+                        <span class="date">January 10, 2025</span>
+                    </div>
+                    <p class="post-excerpt">
+                        Want to improve your blog and engage more readers? Here are ten proven strategies
+                        that will help you create compelling content, build an audience, and establish your
+                        online presence...
+                    </p>
+                    <a href="post2.html" class="read-more">Continue reading →</a>
+                </div>
+            </article>
+
+            <article class="post-preview">
+                <div class="featured-image">
+                    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&h=400&fit=crop" alt="Blog post featured image">
+                </div>
+                <div class="post-content">
+                    <h2><a href="post3.html">Getting Started with CSS Grid</a></h2>
+                    <div class="post-meta">
+                        <span class="author">By John Doe</span>
+                        <span class="date">January 5, 2025</span>
+                    </div>
+                    <p class="post-excerpt">
+                        CSS Grid is a powerful layout system that makes creating complex responsive layouts easier
+                        than ever. Learn how to use Grid to build professional-looking web pages with less code...
+                    </p>
+                    <a href="post3.html" class="read-more">Continue reading →</a>
+                </div>
+            </article>
+
+            <!-- Pagination -->
+            <div class="pagination">
+                <a href="#" class="page-link disabled">← Previous</a>
+                <a href="#" class="page-link active">1</a>
+                <a href="#">2</a>
+                <a href="#">3</a>
+                <a href="#">Next →</a>
+            </div>
+        </main>
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <!-- Search Box -->
+            <div class="widget search-widget">
+                <h3>Search</h3>
+                <form action="#" method="get" class="search-form">
+                    <input type="text" name="q" placeholder="Search posts..." class="search-input">
+                    <button type="submit" class="search-button">🔍</button>
+                </form>
+            </div>
+
+            <!-- Newsletter Signup -->
+            <div class="widget newsletter-widget">
+                <h3>📧 Newsletter</h3>
+                <p>Subscribe to get the latest posts delivered to your inbox!</p>
+                <form action="#" method="post" class="newsletter-form">
+                    <input type="email" name="email" placeholder="Your email address" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+
+            <!-- Social Media Links -->
+            <div class="widget social-widget">
+                <h3>Follow Me</h3>
+                <div class="social-links">
+                    <a href="#" class="social-link twitter" title="Twitter/X">
+                        <span class="social-icon">𝕏</span>
+                        <span>Twitter</span>
+                    </a>
+                    <a href="#" class="social-link linkedin" title="LinkedIn">
+                        <span class="social-icon">in</span>
+                        <span>LinkedIn</span>
+                    </a>
+                    <a href="#" class="social-link bluesky" title="Bluesky">
+                        <span class="social-icon">🦋</span>
+                        <span>Bluesky</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Categories -->
+            <div class="widget categories-widget">
+                <h3>Categories</h3>
+                <ul>
+                    <li><a href="#">Web Design (12)</a></li>
+                    <li><a href="#">Development (8)</a></li>
+                    <li><a href="#">Tutorials (15)</a></li>
+                    <li><a href="#">Tips & Tricks (6)</a></li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-social">
+                <a href="#" title="Twitter/X">𝕏</a>
+                <a href="#" title="LinkedIn">in</a>
+                <a href="#" title="Bluesky">🦋</a>
+            </div>
+            <p class="copyright">© 2025 My Blog. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

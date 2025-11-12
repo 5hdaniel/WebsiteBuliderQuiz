@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Getting Started with CSS Grid - My Blog</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="alternate" type="application/rss+xml" title="RSS Feed" href="rss.xml">
+</head>
+<body>
+    <!-- Top Navigation -->
+    <nav class="top-nav">
+        <div class="nav-container">
+            <div class="logo">
+                <h1>My Blog</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="rss.xml" title="RSS Feed">📡 RSS</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Container with Sidebar -->
+    <div class="container">
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Post Header -->
+            <div class="post-header">
+                <h1>Getting Started with CSS Grid</h1>
+                <div class="post-meta">
+                    <span class="author">By John Doe</span>
+                    <span class="date">January 5, 2025</span>
+                </div>
+            </div>
+
+            <!-- Featured Image -->
+            <div class="featured-image" style="margin-bottom: 2rem;">
+                <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&h=400&fit=crop" alt="Code on computer screen">
+            </div>
+
+            <!-- Post Content -->
+            <div class="post-body">
+                <p>
+                    CSS Grid is one of the most powerful layout tools available to web developers today. It allows you
+                    to create complex, responsive layouts with remarkably simple code. If you've been putting off
+                    learning Grid, now is the perfect time to dive in!
+                </p>
+
+                <h2>What is CSS Grid?</h2>
+                <p>
+                    CSS Grid Layout is a two-dimensional layout system that lets you control both rows and columns
+                    simultaneously. Unlike Flexbox, which is primarily one-dimensional, Grid excels at creating
+                    complete page layouts and complex design patterns.
+                </p>
+
+                <h2>Basic Grid Concepts</h2>
+                <p>
+                    To start using Grid, you first need to define a grid container by setting an element's display
+                    property to grid. Once you do this, all direct children of that element become grid items.
+                </p>
+
+                <p>
+                    Here's a simple example:
+                </p>
+
+                <div style="background: #2d3748; color: #e2e8f0; padding: 1.5rem; border-radius: 8px; margin: 1.5rem 0; font-family: 'Courier New', monospace; overflow-x: auto;">
+                    <pre style="margin: 0;">
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+}
+                    </pre>
+                </div>
+
+                <p>
+                    This creates a grid with three equal columns and a 20-pixel gap between grid items.
+                </p>
+
+                <h2>Grid Template Areas</h2>
+                <p>
+                    One of Grid's most powerful features is the ability to name areas of your layout. This makes
+                    your CSS incredibly readable and maintainable. You can define layout areas and then assign
+                    grid items to those areas by name.
+                </p>
+
+                <h2>Responsive Design with Grid</h2>
+                <p>
+                    CSS Grid shines when it comes to responsive design. You can use the minmax() function and
+                    auto-fit or auto-fill keywords to create layouts that automatically adapt to available space
+                    without media queries.
+                </p>
+
+                <h2>Grid vs Flexbox</h2>
+                <p>
+                    A common question is whether to use Grid or Flexbox. The answer is: both! They complement
+                    each other perfectly. Use Grid for overall page layouts and Flexbox for component layouts.
+                    Grid excels at two-dimensional layouts, while Flexbox is perfect for one-dimensional
+                    arrangements.
+                </p>
+
+                <h2>Practical Applications</h2>
+                <p>
+                    CSS Grid is perfect for:
+                </p>
+                <ul style="margin-left: 2rem; margin-bottom: 1.5rem; line-height: 2;">
+                    <li>Page layouts with headers, sidebars, and footers</li>
+                    <li>Image galleries and photo grids</li>
+                    <li>Card-based designs</li>
+                    <li>Form layouts</li>
+                    <li>Magazine-style layouts</li>
+                </ul>
+
+                <h2>Browser Support</h2>
+                <p>
+                    The good news is that CSS Grid has excellent browser support. All modern browsers fully
+                    support Grid, making it safe to use in production. For older browsers, you can provide
+                    fallback layouts using feature queries.
+                </p>
+
+                <h2>Getting Started</h2>
+                <p>
+                    The best way to learn CSS Grid is by practicing. Start with simple layouts and gradually
+                    increase complexity. There are also excellent resources available online, including CSS
+                    Grid Garden (a game that teaches Grid) and the MDN documentation.
+                </p>
+
+                <h2>Conclusion</h2>
+                <p>
+                    CSS Grid has revolutionized web layout. It's intuitive, powerful, and makes creating
+                    responsive designs easier than ever. Don't be intimidated by the initial learning curve—
+                    once you understand the basics, you'll wonder how you ever lived without it!
+                </p>
+            </div>
+
+            <!-- Author Bio -->
+            <div class="author-bio">
+                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop" alt="John Doe" class="author-avatar">
+                <div class="author-info">
+                    <h3>John Doe</h3>
+                    <p>
+                        John is a web developer and designer with over 10 years of experience creating beautiful,
+                        user-friendly websites. He's passionate about sharing his knowledge and helping others learn
+                        the craft of web development.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Emoji Reactions -->
+            <div class="emoji-reactions">
+                <h3>How did you like this post?</h3>
+                <div class="emoji-buttons">
+                    <button class="emoji-button" onclick="reactEmoji(this, 'like')" data-count="15">👍 <span>15</span></button>
+                    <button class="emoji-button" onclick="reactEmoji(this, 'love')" data-count="4">❤️ <span>4</span></button>
+                    <button class="emoji-button" onclick="reactEmoji(this, 'insightful')" data-count="9">💡 <span>9</span></button>
+                    <button class="emoji-button" onclick="reactEmoji(this, 'laugh')" data-count="0">😄 <span>0</span></button>
+                </div>
+            </div>
+
+            <!-- Previous/Next Navigation -->
+            <div class="post-navigation">
+                <div class="nav-prev">
+                    <span class="nav-label">← Previous Post</span>
+                    <span style="color: #999;">No older posts</span>
+                </div>
+                <div class="nav-next">
+                    <span class="nav-label">Next Post →</span>
+                    <a href="post2.html">10 Tips for Better Blogging</a>
+                </div>
+            </div>
+
+            <!-- Comments Section -->
+            <div class="comments-section">
+                <h3>Leave a Comment</h3>
+                <form action="#" method="post" class="comment-form">
+                    <div class="form-group">
+                        <label for="comment-name">Your Name *</label>
+                        <input type="text" id="comment-name" name="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="comment-email">Your Email *</label>
+                        <input type="email" id="comment-email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="comment-message">Your Comment *</label>
+                        <textarea id="comment-message" name="message" required></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-button">Post Comment</button>
+                </form>
+            </div>
+        </main>
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <!-- Search Box -->
+            <div class="widget search-widget">
+                <h3>Search</h3>
+                <form action="#" method="get" class="search-form">
+                    <input type="text" name="q" placeholder="Search posts..." class="search-input">
+                    <button type="submit" class="search-button">🔍</button>
+                </form>
+            </div>
+
+            <!-- Newsletter Signup -->
+            <div class="widget newsletter-widget">
+                <h3>📧 Newsletter</h3>
+                <p>Subscribe to get the latest posts delivered to your inbox!</p>
+                <form action="#" method="post" class="newsletter-form">
+                    <input type="email" name="email" placeholder="Your email address" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+
+            <!-- Social Media Links -->
+            <div class="widget social-widget">
+                <h3>Follow Me</h3>
+                <div class="social-links">
+                    <a href="#" class="social-link twitter" title="Twitter/X">
+                        <span class="social-icon">𝕏</span>
+                        <span>Twitter</span>
+                    </a>
+                    <a href="#" class="social-link linkedin" title="LinkedIn">
+                        <span class="social-icon">in</span>
+                        <span>LinkedIn</span>
+                    </a>
+                    <a href="#" class="social-link bluesky" title="Bluesky">
+                        <span class="social-icon">🦋</span>
+                        <span>Bluesky</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Categories -->
+            <div class="widget categories-widget">
+                <h3>Categories</h3>
+                <ul>
+                    <li><a href="#">Web Design (12)</a></li>
+                    <li><a href="#">Development (8)</a></li>
+                    <li><a href="#">Tutorials (15)</a></li>
+                    <li><a href="#">Tips & Tricks (6)</a></li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-social">
+                <a href="#" title="Twitter/X">𝕏</a>
+                <a href="#" title="LinkedIn">in</a>
+                <a href="#" title="Bluesky">🦋</a>
+            </div>
+            <p class="copyright">© 2025 My Blog. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function reactEmoji(button, type) {
+            button.classList.toggle('selected');
+            let count = parseInt(button.dataset.count);
+
+            if (button.classList.contains('selected')) {
+                count++;
+            } else {
+                count--;
+            }
+
+            button.dataset.count = count;
+            button.querySelector('span').textContent = count;
+        }
+    </script>
+</body>
+</html>
