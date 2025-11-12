@@ -38,6 +38,10 @@ Based on the user's configuration:
 - Hover effects and transitions
 - Professional typography
 - Color-coded social media icons
+- **🎯 NEW: Admin Panel with CMS** - Visual editor to create/edit blog posts
+  - Located at `/admin`
+  - Supports Google/Microsoft/GitHub authentication
+  - No coding required to manage content
 
 ## File Structure
 
@@ -51,16 +55,29 @@ blog/
 ├── post3.html          # Blog post: Getting Started with CSS Grid
 ├── styles.css          # Complete stylesheet
 ├── rss.xml            # RSS feed for blog
+├── admin/             # 🆕 Admin Panel (CMS)
+│   ├── index.html     # Admin interface
+│   └── config.yml     # CMS configuration
+├── posts/             # 🆕 Blog posts (created via CMS)
+├── content/           # 🆕 Site settings and pages
 └── README.md          # This file
 ```
 
 ## How to Use
 
+### For Visitors:
 1. Open `index.html` in a web browser to view the homepage
 2. Navigate through the blog using the top navigation menu
 3. Click on blog posts to read full articles
 4. Use the sidebar search to find content
 5. Subscribe to the newsletter or RSS feed for updates
+
+### For Admins (Content Management):
+1. Visit `/admin` to access the admin panel
+2. Login with your authorized account (GitHub/Google/Microsoft)
+3. Create and edit blog posts using the visual editor
+4. Manage site settings and pages
+5. **See ADMIN_SETUP.md** in the root directory for detailed setup instructions
 
 ## Customization
 
